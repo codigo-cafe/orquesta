@@ -1,0 +1,90 @@
+:root {
+  --bs-state: #6B879A;
+  --bs-gradient-state: linear-gradient(310deg,#466577,#6B879A);
+}
+
+.btn-state {
+  color: #fff;
+  background-color: var(--bs-state);
+  border-color: var(--bs-state);
+}
+
+.btn-state:hover {
+  color: #fff;
+  background-color: #6B879A;
+  border-color: #6B879A;
+}
+
+.btn-check:focus+.btn-state,
+.btn-state:focus {
+  color: #fff;
+  background-color: #527388;
+  border-color: #527388;
+  box-shadow: 0 0 0 0.2rem rgba(107, 135, 154, 0.5);
+}
+
+.btn-check:checked+.btn-state,
+.btn-check:active+.btn-state,
+.btn-state:active,
+.btn-state.active,
+.show>.btn-state.dropdown-toggle {
+  color: #fff;
+  background-color: #527388;
+  border-color: #527388;
+}
+
+.btn-check:checked+.btn-state:focus,
+.btn-check:active+.btn-state:focus,
+.btn-state:active:focus,
+.btn-state.active:focus,
+.show>.btn-state.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(107, 135, 154, 0.5);
+}
+
+.btn-state:disabled,
+.btn-state.disabled {
+  color: #fff;
+  background-color: var(--bs-state);
+  border-color: var(--bs-state);
+}
+
+.bg-gradient-state {
+  background-image: var(--bs-gradient-state);
+}
+
+.btn.bg-gradient-state:hover {
+  background-image: var(--bs-gradient-state);
+  border-color: var(--bs-state);
+}
+
+.btn-state .btn.bg-outline-state,
+.btn.bg-gradient-state .btn.bg-outline-state {
+  border: 1px solid var(--bs-state);
+}
+
+.btn-state:not(:disabled):not(.disabled).active,
+.btn-state:not(:disabled):not(.disabled):active,
+.show>.btn-state.dropdown-toggle,
+.btn.bg-gradient-state:not(:disabled):not(.disabled).active,
+.btn.bg-gradient-state:not(:disabled):not(.disabled):active,
+.show>.btn.bg-gradient-state.dropdown-toggle {
+  color: color-yiq(var(--bs-state));
+  background-color: var(--bs-state);
+}
+
+.btn-state.focus,
+.btn-state:focus,
+.btn.bg-gradient-state.focus,
+.btn.bg-gradient-state:focus {
+  color: #fff;
+}
+
+.btn-state,
+.btn.bg-gradient-state {
+  color: #fff;
+}
+
+.btn-state:hover,
+.btn.bg-gradient-state:hover {
+  color: #fff;
+}

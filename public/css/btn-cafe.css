@@ -1,0 +1,90 @@
+:root {
+  --bs-cafe: #AC8458;
+  --bs-gradient-cafe: linear-gradient(310deg,#89644A,#AC8458);
+}
+
+.btn-cafe {
+  color: #fff;
+  background-color: var(--bs-cafe);
+  border-color: var(--bs-cafe);
+}
+
+.btn-cafe:hover {
+  color: #fff;
+  background-color: #AC8458;
+  border-color: #AC8458;
+}
+
+.btn-check:focus+.btn-cafe,
+.btn-cafe:focus {
+  color: #fff;
+  background-color: #946a3b;
+  border-color: #946a3b;
+  box-shadow: 0 0 0 0.2rem rgba(172, 132, 88, 0.5);
+}
+
+.btn-check:checked+.btn-cafe,
+.btn-check:active+.btn-cafe,
+.btn-cafe:active,
+.btn-cafe.active,
+.show>.btn-cafe.dropdown-toggle {
+  color: #fff;
+  background-color: #946a3b;
+  border-color: #946a3b;
+}
+
+.btn-check:checked+.btn-cafe:focus,
+.btn-check:active+.btn-cafe:focus,
+.btn-cafe:active:focus,
+.btn-cafe.active:focus,
+.show>.btn-cafe.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(172, 132, 88, 0.5);
+}
+
+.btn-cafe:disabled,
+.btn-cafe.disabled {
+  color: #fff;
+  background-color: var(--bs-cafe);
+  border-color: var(--bs-cafe);
+}
+
+.bg-gradient-cafe {
+  background-image: var(--bs-gradient-cafe);
+}
+
+.btn.bg-gradient-cafe:hover {
+  background-image: var(--bs-gradient-cafe);
+  border-color: var(--bs-cafe);
+}
+
+.btn-cafe .btn.bg-outline-cafe,
+.btn.bg-gradient-cafe .btn.bg-outline-cafe {
+  border: 1px solid var(--bs-cafe);
+}
+
+.btn-cafe:not(:disabled):not(.disabled).active,
+.btn-cafe:not(:disabled):not(.disabled):active,
+.show>.btn-cafe.dropdown-toggle,
+.btn.bg-gradient-cafe:not(:disabled):not(.disabled).active,
+.btn.bg-gradient-cafe:not(:disabled):not(.disabled):active,
+.show>.btn.bg-gradient-cafe.dropdown-toggle {
+  color: color-yiq(var(--bs-cafe));
+  background-color: var(--bs-cafe);
+}
+
+.btn-cafe.focus,
+.btn-cafe:focus,
+.btn.bg-gradient-cafe.focus,
+.btn.bg-gradient-cafe:focus {
+  color: #fff;
+}
+
+.btn-cafe,
+.btn.bg-gradient-cafe {
+  color: #fff;
+}
+
+.btn-cafe:hover,
+.btn.bg-gradient-cafe:hover {
+  color: #fff;
+}

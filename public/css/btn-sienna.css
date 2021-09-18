@@ -1,0 +1,90 @@
+:root {
+  --bs-sienna: #400A15;
+  --bs-gradient-sienna: linear-gradient(310deg,#28050D,#400A15);
+}
+
+.btn-sienna {
+  color: #fff;
+  background-color: var(--bs-sienna);
+  border-color: var(--bs-sienna);
+}
+
+.btn-sienna:hover {
+  color: #fff;
+  background-color: #3A0913;
+  border-color: #3A0913;
+}
+
+.btn-check:focus+.btn-sienna,
+.btn-sienna:focus {
+  color: #fff;
+  background-color: #3A0913;
+  border-color: #3A0913;
+  box-shadow: 0 0 0 0.2rem rgba(64, 10, 21, 0.5);
+}
+
+.btn-check:checked+.btn-sienna,
+.btn-check:active+.btn-sienna,
+.btn-sienna:active,
+.btn-sienna.active,
+.show>.btn-sienna.dropdown-toggle {
+  color: #fff;
+  background-color: #3A0913;
+  border-color: #3A0913;
+}
+
+.btn-check:checked+.btn-sienna:focus,
+.btn-check:active+.btn-sienna:focus,
+.btn-sienna:active:focus,
+.btn-sienna.active:focus,
+.show>.btn-sienna.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(64, 10, 21, 0.5);
+}
+
+.btn-sienna:disabled,
+.btn-sienna.disabled {
+  color: #fff;
+  background-color: var(--bs-sienna);
+  border-color: var(--bs-sienna);
+}
+
+.bg-gradient-sienna {
+  background-image: var(--bs-gradient-sienna);
+}
+
+.btn.bg-gradient-sienna:hover {
+  background-image: var(--bs-gradient-sienna);
+  border-color: var(--bs-sienna);
+}
+
+.btn-sienna .btn.bg-outline-sienna,
+.btn.bg-gradient-sienna .btn.bg-outline-sienna {
+  border: 1px solid var(--bs-sienna);
+}
+
+.btn-sienna:not(:disabled):not(.disabled).active,
+.btn-sienna:not(:disabled):not(.disabled):active,
+.show>.btn-sienna.dropdown-toggle,
+.btn.bg-gradient-sienna:not(:disabled):not(.disabled).active,
+.btn.bg-gradient-sienna:not(:disabled):not(.disabled):active,
+.show>.btn.bg-gradient-sienna.dropdown-toggle {
+  color: color-yiq(var(--bs-sienna));
+  background-color: var(--bs-sienna);
+}
+
+.btn-sienna.focus,
+.btn-sienna:focus,
+.btn.bg-gradient-sienna.focus,
+.btn.bg-gradient-sienna:focus {
+  color: #fff;
+}
+
+.btn-sienna,
+.btn.bg-gradient-sienna {
+  color: #fff;
+}
+
+.btn-sienna:hover,
+.btn.bg-gradient-sienna:hover {
+  color: #fff;
+}

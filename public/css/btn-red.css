@@ -1,0 +1,90 @@
+:root {
+  --bs-red: #EC0A0E;
+  --bs-gradient-red: linear-gradient(310deg,#c00000,#EC0A0E);
+}
+
+.btn-red {
+  color: #fff;
+  background-color: var(--bs-red);
+  border-color: var(--bs-red);
+}
+
+.btn-red:hover {
+  color: #fff;
+  background-color: #db0008;
+  border-color: #db0008;
+}
+
+.btn-check:focus+.btn-red,
+.btn-red:focus {
+  color: #fff;
+  background-color: #db0008;
+  border-color: #db0008;
+  box-shadow: 0 0 0 0.2rem rgba(236, 10, 14, 0.5);
+}
+
+.btn-check:checked+.btn-red,
+.btn-check:active+.btn-red,
+.btn-red:active,
+.btn-red.active,
+.show>.btn-red.dropdown-toggle {
+  color: #fff;
+  background-color: #db0008;
+  border-color: #db0008;
+}
+
+.btn-check:checked+.btn-red:focus,
+.btn-check:active+.btn-red:focus,
+.btn-red:active:focus,
+.btn-red.active:focus,
+.show>.btn-red.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(236, 10, 14, 0.5);
+}
+
+.btn-red:disabled,
+.btn-red.disabled {
+  color: #fff;
+  background-color: var(--bs-red);
+  border-color: var(--bs-red);
+}
+
+.bg-gradient-red {
+  background-image: var(--bs-gradient-red);
+}
+
+.btn.bg-gradient-red:hover {
+  background-image: var(--bs-gradient-red);
+  border-color: var(--bs-red);
+}
+
+.btn-red .btn.bg-outline-red,
+.btn.bg-gradient-red .btn.bg-outline-red {
+  border: 1px solid var(--bs-red);
+}
+
+.btn-red:not(:disabled):not(.disabled).active,
+.btn-red:not(:disabled):not(.disabled):active,
+.show>.btn-red.dropdown-toggle,
+.btn.bg-gradient-red:not(:disabled):not(.disabled).active,
+.btn.bg-gradient-red:not(:disabled):not(.disabled):active,
+.show>.btn.bg-gradient-red.dropdown-toggle {
+  color: color-yiq(var(--bs-red));
+  background-color: var(--bs-red);
+}
+
+.btn-red.focus,
+.btn-red:focus,
+.btn.bg-gradient-red.focus,
+.btn.bg-gradient-red:focus {
+  color: #fff;
+}
+
+.btn-red,
+.btn.bg-gradient-red {
+  color: #fff;
+}
+
+.btn-red:hover,
+.btn.bg-gradient-red:hover {
+  color: #fff;
+}

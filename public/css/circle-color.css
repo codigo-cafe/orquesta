@@ -1,0 +1,14 @@
+.circle-color {
+	width: 30px;
+	height: 30px;
+	background: transparent;
+	display: inline-block;
+	margin: 5px;
+	border-radius: 100%;
+	border: 1px solid rgba(0,0,0,.08);
+}
+
+.img-circle-color {
+    background-image: url(../img/Multicolor.png);
+    background-position: center center;
+}

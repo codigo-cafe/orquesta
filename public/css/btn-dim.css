@@ -1,0 +1,90 @@
+:root {
+  --bs-dim: #6d635d;
+  --bs-gradient-dim: linear-gradient(310deg,#2b231e,#6d635d);
+}
+
+.btn-dim {
+  color: #fff;
+  background-color: var(--bs-dim);
+  border-color: var(--bs-dim);
+}
+
+.btn-dim:hover {
+  color: #fff;
+  background-color: #6d635d;
+  border-color: #6d635d;
+}
+
+.btn-check:focus+.btn-dim,
+.btn-dim:focus {
+  color: #fff;
+  background-color: #4d443e;
+  border-color: #4d443e;
+  box-shadow: 0 0 0 0.2rem rgba(109, 99, 93, 0.5);
+}
+
+.btn-check:checked+.btn-dim,
+.btn-check:active+.btn-dim,
+.btn-dim:active,
+.btn-dim.active,
+.show>.btn-dim.dropdown-toggle {
+  color: #fff;
+  background-color: #4d443e;
+  border-color: #4d443e;
+}
+
+.btn-check:checked+.btn-dim:focus,
+.btn-check:active+.btn-dim:focus,
+.btn-dim:active:focus,
+.btn-dim.active:focus,
+.show>.btn-dim.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(109, 99, 93, 0.5);
+}
+
+.btn-dim:disabled,
+.btn-dim.disabled {
+  color: #fff;
+  background-color: var(--bs-dim);
+  border-color: var(--bs-dim);
+}
+
+.bg-gradient-dim {
+  background-image: var(--bs-gradient-dim);
+}
+
+.btn.bg-gradient-dim:hover {
+  background-image: var(--bs-gradient-dim);
+  border-color: var(--bs-dim);
+}
+
+.btn-dim .btn.bg-outline-dim,
+.btn.bg-gradient-dim .btn.bg-outline-dim {
+  border: 1px solid var(--bs-dim);
+}
+
+.btn-dim:not(:disabled):not(.disabled).active,
+.btn-dim:not(:disabled):not(.disabled):active,
+.show>.btn-dim.dropdown-toggle,
+.btn.bg-gradient-dim:not(:disabled):not(.disabled).active,
+.btn.bg-gradient-dim:not(:disabled):not(.disabled):active,
+.show>.btn.bg-gradient-dim.dropdown-toggle {
+  color: color-yiq(var(--bs-dim));
+  background-color: var(--bs-dim);
+}
+
+.btn-dim.focus,
+.btn-dim:focus,
+.btn.bg-gradient-dim.focus,
+.btn.bg-gradient-dim:focus {
+  color: #fff;
+}
+
+.btn-dim,
+.btn.bg-gradient-dim {
+  color: #fff;
+}
+
+.btn-dim:hover,
+.btn.bg-gradient-dim:hover {
+  color: #fff;
+}
