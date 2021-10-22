@@ -21,7 +21,7 @@ class EventRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
-            'slug' => Str::slug($this->name),
+            'slug' => Str::slug($this->name) . '-' . $this->route('event')->id,
             'user_id' => Auth::user()->id,
         ]);
     }
@@ -41,14 +41,13 @@ class EventRequest extends FormRequest
             'start_time' => 'required|date_format:H:i',
             'end_time' => 'required|date_format:H:i|after:start_time',
             'place' => 'required|max:255',
-            'cover' => 'nullable|mimes:jpg,jpeg,png,bmp|max:5120',
             'category_id' => 'required',
             'people' => 'required',
             'points' => 'required',
         ];
 
         if ($this->method() === 'POST') {
-            $rules['cover'] = 'required';
+            $rules['cover'] = 'required|mimes:jpg,jpeg,png,bmp|max:5120';
         }
 
         return $rules;

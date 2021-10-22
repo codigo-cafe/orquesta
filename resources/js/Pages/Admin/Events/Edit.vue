@@ -30,7 +30,10 @@
 									<label for="e_cover">Imagen de Portada</label>
 									<div class="input-group">
 										<span class="input-group-text"><i class="fas fa-image"></i></span>
-										<input type="file" ref="cover" class="form-control" @input="form.cover = $event.target.files[0]">
+										<input type="file"
+											accept="image/png, image/bmp, image/jpg, image/jpeg"
+											ref="cover"
+											class="form-control" @input="selectNewPhoto">
 									</div>
 									<div v-if="errors.cover">
 										<small class="error text-danger">{{ errors.cover[0] }}</small>
@@ -202,7 +205,7 @@ export default {
 	methods: {
 		async submit() {
 			this.disabled = true;
-			console.log(this.form.date);
+			console.log(this.form.cover);
 			axios.put(this.route('events.update', this.event.id), this.form)
 			.then(response => {
 				this.disabled = false;
@@ -250,6 +253,16 @@ export default {
 		nameAndDiscount ({ name, discount }) {
 			return `${name} -${discount} Bs`
 		},
+		selectNewPhoto() {
+			const reader = new FileReader();
+
+			reader.onload = (e) => {
+				//this.photoPreview = e.target.result;
+				this.form.cover = e.target.result;
+			};
+
+			reader.readAsDataURL(this.$refs.cover.files[0]);
+		},
 		clear() {
 			this.errors = {};
 			this.form.name = '';
@@ -257,6 +270,7 @@ export default {
             this.form.cover = null;
             this.form.price = '';
 			this.form.date = '';
+			this.date = null;
             this.form.start_time = '';
             this.form.end_time = '';
             this.form.place = '';

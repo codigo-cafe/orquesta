@@ -4,7 +4,7 @@
 			<div class="card">
 				<div class="card-body">
 					<h6 class="card-title text-dark text-gradient">Calendario de Eventos</h6>
-					<button class="btn btn-dim" @click="reload()">Actualizar</button>
+					<button class="btn btn-dim" @click="update()"><i class="fas fa-redo me-1"></i> Actualizar</button>
 					<FullCalendar ref="fullCalendar" :options="calendarOptions"/>
 
 					<!--  end card  -->
@@ -230,6 +230,10 @@ export default {
 		reload() {
 	    	let calendarApi = this.$refs.fullCalendar.getApi()
 			calendarApi.refetchEvents()
+		},
+		update() {
+			this.reload();
+			this.showNotification('Eventos actualizados', 'success');
 		},
 		showNotification: function(message, type) {
 			$.notify({

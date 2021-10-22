@@ -35,7 +35,7 @@ class EventController extends Controller
 
     public function getEvents(Request $request)
     {
-        $eventList = Event::get(['id', 'name as title', 'date as start', 'date as end', 'status']);
+        $eventList = Event::get(['id', 'name as title', 'date', 'status']);
         foreach($eventList as $event) {
             if ($event->status) {
                 $event->classNames = 'bg-gradient-success border-success shadow';
@@ -117,20 +117,16 @@ class EventController extends Controller
     public function update(EventRequest $request, Event $event)
     {
         $data = $request->all();
-        if ($request->hasFile('cover'))
+        if (isset($data['cover']))
         {
             $coverPath = str_replace('storage/covers', 'public/covers', $event->cover);
             Storage::delete($coverPath);
 
-            $file = $request->cover->store('public/covers');
-            // correct the date format
-            $image = Image::make(Storage::get($file))
-                ->widen(600)
-                ->limitColors(255)
-                ->encode();
+            $url = 'covers/'.md5(microtime()).'.jpg';
 
-            Storage::put($file, (string) $image);
-            $data['cover'] = Storage::url($file);
+            $resized_image = Image::make($request->cover)->widen(720)->limitColors(255)->stream('jpg', 100);
+            Storage::put('public/'.$url, $resized_image);
+            $data['cover'] = Storage::url($url);
         } else {
             $data['cover'] = $event->cover;
         }

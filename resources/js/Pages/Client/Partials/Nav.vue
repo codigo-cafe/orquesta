@@ -1,5 +1,5 @@
 <template>
-	<nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="0">
+	<nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="250">
 		<div class="container">
 			<div class="navbar-translate">
 				<inertia-link class="navbar-brand" :href="route('home')" rel="tooltip" title="Orquesta Vivaldi Tarija" data-placement="bottom" target="_blank">
