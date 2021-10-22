@@ -13,6 +13,7 @@
                     <div class="mensaje">
                         ¿<span>{{ options.message }}</span>
                         <span class='font-weight-bold' v-if="data.name">{{ data.name }}<span v-if="data.surnames">{{ ' ' + data.surnames }}</span></span>
+                        <span class='font-weight-bold' v-if="data.title">{{ data.title }}</span><span v-if="data.title"> a la nueva fecha </span><span class='font-weight-bold' v-if="data.title">{{ options.start }}</span>
                         <span class='font-weight-bold' v-if="data.person">{{ data.person.name }}<span v-if="data.person">{{ ' ' + data.person.surnames }}</span></span>?
                     </div>
                 </div>
@@ -20,7 +21,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col text-center">
-                                <button type="button" class="btn btn-default me-2" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-default me-2" data-bs-dismiss="modal" @click="closeModalShow">Cancelar</button>
                                 <button type="button" class="btn" :class="options.btnClass" @click="confirm">{{ options.btnText }}</button>
                             </div>
                         </div>
@@ -34,25 +35,27 @@
     export default {
         props: ['options', 'data', 'reload', 'showNotification'],
 
-        mounted() {
-            var ModalConfirmHidden = document.getElementById('ModalConfirm')
-            ModalConfirmHidden.addEventListener('hidden.bs.modal',this.closeModalShow);
-        },
-
         methods: {
             confirm() {
-                axios.post(this.route(this.options.url, this.data.id), {
-                    '_method': 'PUT'
-                })
-                .then(response => {
-                    this.closeModalConfirm();
-                    this.reload();
-                    if (this.options.url == 'events.destroy' || this.options.url == 'events.restore') {
-                        this.showNotification(response.data.message, response.data.type, response.data.event);
-                    } else {
+                if (this.options.url == 'events.move') {
+                    axios.put(this.route(this.options.url, this.data.id), {
+                        date: this.options.info.event.start
+                    })
+                    .then(response => {
+                        this.closeModalConfirm();
+                        this.reload();
                         this.showNotification(response.data.message, response.data.type);
-                    }
-                })
+                    })
+                } else {
+                    axios.post(this.route(this.options.url, this.data.id), {
+                        '_method': 'PUT'
+                    })
+                    .then(response => {
+                        this.closeModalConfirm();
+                        this.reload();
+                        this.showNotification(response.data.message, response.data.type);
+                    })
+                }
             },
             closeModalConfirm() {
                 var ModalConfirm = document.getElementById('ModalConfirm')
@@ -60,11 +63,14 @@
                 modal.hide();
             },
             closeModalShow() {
+                this.options.info.revert();
+                /*
                 var ModalShow = document.getElementById('ModalShow')
-                if (ModalShow) {
+                if (ModalShow != null) {
                     var modalShow = bootstrap.Modal.getInstance(ModalShow)
                     modalShow.show();
                 }
+                */
             }
         }
     }

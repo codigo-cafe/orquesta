@@ -92,6 +92,7 @@ Route::middleware(['auth:sanctum', 'verified', 'verify_status'])->group(function
         'show' => 'events.show',
         'update' => 'events.update',
     ]);
+    Route::put('events/{event}/move', [EventController::class, 'move'])->name('events.move');
     Route::put('events/{event}/restore', [EventController::class, 'restore'])->name('events.restore');
     Route::put('events/{event}/destroy', [EventController::class, 'destroy'])->name('events.destroy');
 

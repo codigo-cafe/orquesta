@@ -33,7 +33,7 @@ class EventRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'name' => 'required|max:60',
             'description' => 'required|max:255',
             'price' => 'required|min:0',
@@ -41,10 +41,16 @@ class EventRequest extends FormRequest
             'start_time' => 'required|date_format:H:i',
             'end_time' => 'required|date_format:H:i|after:start_time',
             'place' => 'required|max:255',
-            'cover' => 'required|mimes:jpg,jpeg,png,bmp|max:5120',
+            'cover' => 'nullable|mimes:jpg,jpeg,png,bmp|max:5120',
             'category_id' => 'required',
             'people' => 'required',
             'points' => 'required',
         ];
+
+        if ($this->method() === 'POST') {
+            $rules['cover'] = 'required';
+        }
+
+        return $rules;
     }
 }

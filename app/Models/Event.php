@@ -36,6 +36,16 @@ class Event extends Model
         return $fecha->format('d') . ' de ' . $mes . ' de ' . $fecha->format('Y');
     }
 
+    public function getStartTimeAttribute($start_time)
+    {
+        return Carbon::parse($start_time)->format('H:i');
+    }
+
+    public function getEndTimeAttribute($end_time)
+    {
+        return Carbon::parse($end_time)->format('H:i');
+    }
+
     public function points()
     {
         return $this->belongsToMany(Point::class, 'event_point');

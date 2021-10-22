@@ -202,6 +202,7 @@ export default {
 	methods: {
 		async submit() {
 			this.disabled = true;
+			console.log(this.form.date);
 			axios.put(this.route('events.update', this.event.id), this.form)
 			.then(response => {
 				this.disabled = false;

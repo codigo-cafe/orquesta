@@ -19,15 +19,26 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<i class="fas fa-info-circle me-3"></i>
-						<span class="text-gradient text-primary text-uppercase text-xs font-weight-bold">
-							{{ event.name }}
-						</span>
-						<p class="card-description mb-4">
-							{{ event.description }}
-						</p>
-						<i class="fas fa-calendar-day me-3"></i>
-						<span class="text-xs font-weight-bold my-2">{{ event.date }} | {{ event.start_time }} - {{ event.end_time }}</span>
+						<div class="row">
+							<div class="col-md-6">
+								<i class="fas fa-info-circle me-3"></i>
+								<span class="text-gradient text-primary text-uppercase text-xs font-weight-bold">
+									{{ event.name }}
+								</span>
+								<p class="card-description mb-4">
+									{{ event.description }}
+								</p>
+								<i class="fas fa-calendar-day me-3"></i>
+								<span class="text-xs font-weight-bold my-2">{{ event.date }} | {{ event.start_time }} - {{ event.end_time }}</span>
+							</div>
+							<div class="col-md-6">
+								<div class="position-relative">
+									<a class="d-block blur-shadow-image">
+										<img :src="event.cover" :alt="event.title" class="img-fluid shadow border-radius-lg move-on-hover">
+									</a>
+								</div>
+							</div>
+						</div>
 						<hr>
 						<div class="author align-items-center">
 							<img :src="profile_photo_path" alt="Usuario responsable" class="avatar shadow">

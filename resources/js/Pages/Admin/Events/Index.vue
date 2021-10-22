@@ -54,6 +54,7 @@ export default {
 				btnText: '',
 				btnClass: '',
 				iconClass: '',
+				info: [],
 			},
 			calendarOptions: {
 				plugins: [ dayGridPlugin, interactionPlugin ],
@@ -63,6 +64,7 @@ export default {
 				dateClick: this.handleDateClick,
 				eventDragStart: this.eventDragStart,
 				eventDragStop: this.eventDragStop,
+				eventDrop: this.eventDrop,
 				eventDidMount: this.eventDidMount,
 				eventClick: this.show,
 				eventSources: [
@@ -91,7 +93,7 @@ export default {
 	    },
 	    eventDidMount(arg){
 	    	//console.log(arg.el)
-	    	console.log(arg.event.classNames)
+	    	//console.log(arg.event.classNames)
 	    	let icon = document.createElement("i");
 	    	if (arg.event.extendedProps.status) {
     			icon.setAttribute('class', 'fas fa-check text-success ms-2');
@@ -107,6 +109,28 @@ export default {
 	    eventDragStop(info) {
 	    	console.log(info.event.id)
 	    },
+	    eventDrop(info) {
+		    if (this.hasAnyPermission(['edit_events'])) {
+				this.data = info.event;
+				this.options.info = info;
+				this.options.start = moment(info.event.start).format('DD/MM/YYYY');
+				this.options.url = 'events.move';
+				this.options.message = 'Está seguro de mover el evento: ';
+				this.options.btnText = 'Confirmar';
+				this.options.btnClass = 'btn-success bg-gradient-success';
+				this.options.iconClass = 'fa-check text-success';
+
+				var myModal = new bootstrap.Modal(document.getElementById('ModalConfirm'), {
+					keyboard: false
+				});
+				myModal.show();
+			}
+			/*
+		    if (!confirm("Are you sure about this change?")) {
+		      info.revert();
+		    }
+		    */
+		},
 	    show(info) {
 	    	var mensaje = '';
 	    	if (this.hasAnyPermission(['view_events'])) {
@@ -132,7 +156,7 @@ export default {
 			}
 	    },
 	    edit(event) {
-	    	console.log(event)
+	    	//console.log(event)
 	    	var mensaje = '';
 	    	if (this.hasAnyPermission(['edit_events'])) {
 				axios.get(this.route('events.edit', event.id))
@@ -207,9 +231,7 @@ export default {
 	    	let calendarApi = this.$refs.fullCalendar.getApi()
 			calendarApi.refetchEvents()
 		},
-		showNotification: function(message, type, event) {
-			this.data = event;
-			console.log(this.data)
+		showNotification: function(message, type) {
 			$.notify({
 				icon: "fas fa-check",
 				message: message

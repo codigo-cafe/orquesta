@@ -35,7 +35,7 @@ class EventController extends Controller
 
     public function getEvents(Request $request)
     {
-        $eventList = Event::get(['id', 'name as title', 'date', 'status']);
+        $eventList = Event::get(['id', 'name as title', 'date as start', 'date as end', 'status']);
         foreach($eventList as $event) {
             if ($event->status) {
                 $event->classNames = 'bg-gradient-success border-success shadow';
@@ -102,7 +102,9 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        return $event->load('people.phones', 'people.address', 'points');
+        $info = $event->load('people.phones', 'people.address', 'points');
+        $info->date = Carbon::parse($info->date)->format('d/m/Y');
+        return $info;
     }
 
     /**
@@ -114,7 +116,47 @@ class EventController extends Controller
      */
     public function update(EventRequest $request, Event $event)
     {
-        //
+        $data = $request->all();
+        if ($request->hasFile('cover'))
+        {
+            $coverPath = str_replace('storage/covers', 'public/covers', $event->cover);
+            Storage::delete($coverPath);
+
+            $file = $request->cover->store('public/covers');
+            // correct the date format
+            $image = Image::make(Storage::get($file))
+                ->widen(600)
+                ->limitColors(255)
+                ->encode();
+
+            Storage::put($file, (string) $image);
+            $data['cover'] = Storage::url($file);
+        } else {
+            $data['cover'] = $event->cover;
+        }
+        $data['date'] = Carbon::createFromFormat('Y-m-d\TH:i:s.uO', $request->date)->format('Y-m-d');
+        $data['start_time'] = Carbon::createFromFormat('H:i', $request->start_time)->format('H:i:s');
+        $data['end_time'] = Carbon::createFromFormat('H:i', $request->end_time)->format('H:i:s');
+        $event->update($data);
+        $event->people()->detach();
+        $event->people()->attach($request->people);
+        $event->points()->detach();
+        $event->points()->attach($request->points);
+        return response()->json([
+            'type' => 'success',
+            'message' => 'Evento modificado correctamente',
+        ]);
+    }
+
+    public function move(Request $request, Event $event)
+    {
+        //$this->authorize('restore', [Event::class, $event]);
+        $request->date = Carbon::createFromFormat('Y-m-d\TH:i:s.uO', $request->date)->format('Y-m-d');
+        $event->update(['date' => $request->date]);
+        return response()->json([
+            'type' => 'success',
+            'message' => 'Evento modificado correctamente',
+        ]);
     }
 
     /**
