@@ -30,7 +30,7 @@
 									<label for="e_cover">Imagen de Portada</label>
 									<div class="input-group">
 										<span class="input-group-text"><i class="fas fa-image"></i></span>
-										<input type="file" class="form-control" @input="form.cover = $event.target.files[0]">
+										<input type="file" ref="cover" class="form-control" @input="form.cover = $event.target.files[0]">
 									</div>
 									<div v-if="errors.cover">
 										<small class="error text-danger">{{ errors.cover[0] }}</small>
@@ -129,8 +129,8 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-bs-dismiss="modal" :disabled="disabled">Cancelar</button>
-						<button type="submit" class="btn btn-cafe bg-gradient-cafe">
-							<span>
+						<button type="submit" class="btn btn-cafe bg-gradient-cafe" :disabled="disabled">
+							<span v-if="disabled">
 								<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
 								Procesando
 							</span>
@@ -256,6 +256,11 @@ export default {
             this.form.promotion_id = '';
             this.form.people = [];
             this.form.points = [];
+			this.valueCategory = '';
+            this.valuePromotion = '';
+            this.valuePerson = [];
+            this.valuePoint = [];
+            this.$refs.cover.value = null;
 		},
 		closeModal() {
 			var ModalCreate = document.getElementById('ModalCreate')

@@ -42,7 +42,7 @@
                             </li>
                             <li class="nav-item" v-if="hasAnyPermission(['view_points'])">
                                 <inertia-link class="nav-link" :class="{ 'active' : route().current('points.*') }" :href="route('points.index')">
-                                    <span class="sidenav-normal"> Puntos de Ventas </span>
+                                    <span class="sidenav-normal"> Puntos de Venta </span>
                                 </inertia-link>
                             </li>
                         </ul>

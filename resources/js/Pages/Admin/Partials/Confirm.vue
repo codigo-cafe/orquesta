@@ -34,6 +34,11 @@
     export default {
         props: ['options', 'data', 'reload', 'showNotification'],
 
+        mounted() {
+            var ModalConfirmHidden = document.getElementById('ModalConfirm')
+            ModalConfirmHidden.addEventListener('hidden.bs.modal',this.closeModalShow);
+        },
+
         methods: {
             confirm() {
                 axios.post(this.route(this.options.url, this.data.id), {
@@ -42,13 +47,24 @@
                 .then(response => {
                     this.closeModalConfirm();
                     this.reload();
-                    this.showNotification(response.data.message, response.data.type);
+                    if (this.options.url == 'events.destroy' || this.options.url == 'events.restore') {
+                        this.showNotification(response.data.message, response.data.type, response.data.event);
+                    } else {
+                        this.showNotification(response.data.message, response.data.type);
+                    }
                 })
             },
             closeModalConfirm() {
                 var ModalConfirm = document.getElementById('ModalConfirm')
                 var modal = bootstrap.Modal.getInstance(ModalConfirm)
                 modal.hide();
+            },
+            closeModalShow() {
+                var ModalShow = document.getElementById('ModalShow')
+                if (ModalShow) {
+                    var modalShow = bootstrap.Modal.getInstance(ModalShow)
+                    modalShow.show();
+                }
             }
         }
     }

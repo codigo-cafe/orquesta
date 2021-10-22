@@ -194,6 +194,8 @@ return [
         'texture'               => 'textura',
         'mount'                 => 'cantidad',
         'type_id'               => 'tipo',
+        'people'                => 'contactos',
+        'points'                => 'puntos de venta',
         'section_id'            => 'sección',
         'department_id'         => 'departamento',
         'base_id'               => 'color base',

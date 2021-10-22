@@ -85,14 +85,15 @@ Route::middleware(['auth:sanctum', 'verified', 'verify_status'])->group(function
     Route::put('categories/{category}/restore', [CategoryController::class, 'restore'])->name('categories.restore');
     Route::put('categories/{category}/destroy', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
-    Route::resource('events', EventController::class)->except(['show', 'create', 'destroy'])->names([
+    Route::resource('events', EventController::class)->except(['create', 'destroy'])->names([
         'index' => 'events.index',
         'store' => 'events.store',
         'edit' => 'events.edit',
+        'show' => 'events.show',
         'update' => 'events.update',
     ]);
-    Route::put('events/{category}/restore', [EventController::class, 'restore'])->name('events.restore');
-    Route::put('events/{category}/destroy', [EventController::class, 'destroy'])->name('events.destroy');
+    Route::put('events/{event}/restore', [EventController::class, 'restore'])->name('events.restore');
+    Route::put('events/{event}/destroy', [EventController::class, 'destroy'])->name('events.destroy');
 
     Route::resource('points', PointController::class)->except(['show', 'create', 'destroy'])->names([
         'index' => 'points.index',

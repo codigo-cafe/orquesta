@@ -2,11 +2,11 @@
     <app-layout :orchestra="orchestra">
         <div class="wrapper">
             <div class="page-header page-header-medium">
-                <div class="page-header-image" data-parallax="true" style="background-image: url('/img/orquesta-wallpaper.jpg');">
+                <div class="page-header-image" data-parallax="true" style="background-image: url('/img/bg-1.jpg');">
                 </div>
                 <div class="content-center">
                     <div class="container">
-                        <h1 class="title">This is our great company.</h1>
+                        <h1 class="title title-ephesis">Orquesta Vivaldi Tarija</h1>
                         <div class="text-center">
                             <a href="#pablo" class="btn btn-danger btn-icon btn-round">
                                 <i class="fab fa-facebook-square"></i>
@@ -33,7 +33,7 @@
                     <div class="section-story-overview">
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="image-container image-left" style="background-image: url('/img/login.jpg')">
+                                <div class="image-container image-left" style="background-image: url('/img/img-1.jpg')">
                                     <!-- First image on the left side -->
                                     <p class="blockquote blockquote-primary">"Over the span of the satellite record, Arctic sea ice has been declining significantly, while sea ice in the Antarctichas increased very slightly"
                                         <br>
@@ -41,10 +41,10 @@
                                         <small>-NOAA</small>
                                     </p>
                                 </div>
-                                <div class="image-container" style="background-image: url('/img/bg3.jpg')"></div>
+                                <div class="image-container" style="background-image: url('/img/img-2.jpg')"></div>
                             </div>
                             <div class="col-md-5">
-                                <div class="image-container image-right" style="background-image: url('/img/bg1.jpg')"></div>
+                                <div class="image-container image-right" style="background-image: url('/img/img-3.jpg')"></div>
                                 <h3>So what does the new record for the lowest level of winter ice actually mean</h3>
                                 <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever happens with climate change. Even if the Arctic continues to be one of the fastest-warming regions of the world, it will always be plunged into bitterly cold polar dark every winter. And year-by-year, for all kinds of natural reasons, there’s huge variety of the state of the ice.
                                 </p>

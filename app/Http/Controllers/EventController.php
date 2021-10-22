@@ -35,8 +35,29 @@ class EventController extends Controller
 
     public function getEvents(Request $request)
     {
-        $eventList = Event::get(['id', 'name as title','date']);
+        $eventList = Event::get(['id', 'name as title', 'date', 'status']);
+        foreach($eventList as $event) {
+            if ($event->status) {
+                $event->classNames = 'bg-gradient-success border-success shadow';
+            } else {
+                $event->classNames = 'bg-gradient-warning border-warning shadow';
+            }
+        }
         return response()->json(["events" => $eventList]);
+    }
+
+    public function show(Event $event)
+    {
+        $info = $event->load('user.person');
+
+        $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+        $fecha = Carbon::parse($event->date);
+        $mes = $meses[($fecha->format('n')) - 1];
+
+        $info->date = $fecha->format('d') . ' de ' . $mes . ' de ' . $fecha->format('Y');
+        $info->start_time = Carbon::parse($event->start_time)->format('H:i');
+        $info->end_time = Carbon::parse($event->end_time)->format('H:i');
+        return $info;
     }
 
     /**
@@ -81,7 +102,7 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        return $event->load('people.phones', 'people.address', 'points');
     }
 
     /**
@@ -104,6 +125,23 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        //$this->authorize('delete', [Event::class, $event]);
+        $event->update(['status' => false]);
+        return response()->json([
+            'type' => 'success',
+            'message' => 'Evento inhabilitado correctamente',
+            'event' => $event->load('user.person'),
+        ]);
+    }
+
+    public function restore(Event $event)
+    {
+        //$this->authorize('restore', [Event::class, $event]);
+        $event->update(['status' => true]);
+        return response()->json([
+            'type' => 'success',
+            'message' => 'Evento habilitado correctamente',
+            'event' => $event->load('user.person'),
+        ]);
     }
 }

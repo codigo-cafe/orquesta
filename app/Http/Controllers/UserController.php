@@ -96,7 +96,7 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
-        //$this->authorize('update', [User::class, $user]);
+         //$this->authorize('update', [User::class, $user]);
         $user->update($request->except(['person_id']));
         $user->syncRoles($request->role_id);
         return response()->json([

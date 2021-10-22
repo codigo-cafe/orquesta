@@ -2283,6 +2283,18 @@ p {
   padding-top: 30px;
 }
 
+@font-face {
+    font-family: "Ephesis-Regular";
+    src: url("/fonts/Ephesis/Ephesis-Regular.ttf");
+}
+
+.title-ephesis {
+  font-family: "Ephesis-Regular";
+  font-weight: 400;
+  padding-top: 30px;
+  font-size: 3rem;
+}
+
 .title.title-up {
   text-transform: uppercase;
 }
