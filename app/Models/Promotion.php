@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Event;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Carbon\Carbon;
 
 class Promotion extends Model
 {
@@ -26,5 +27,10 @@ class Promotion extends Model
     public function getDateEndAttribute($date)
     {
         return Carbon::create($date)->format('d/m/Y');
+    }
+
+    public function events()
+    {
+        return $this->belongsToMany(Event::class);
     }
 }

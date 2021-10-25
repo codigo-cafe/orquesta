@@ -1,5 +1,5 @@
 <template>
-	<nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="250">
+	<nav class="navbar navbar-expand-lg bg-primary fixed-top">
 		<div class="container">
 			<div class="navbar-translate">
 				<inertia-link class="navbar-brand" :href="route('home')" rel="tooltip" title="Orquesta Vivaldi Tarija" data-placement="bottom" target="_blank">
@@ -18,37 +18,37 @@
 							Tu Sinfónica
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="#">Historia</a>
-							<a class="dropdown-item" href="#">Integrantes</a>
-							<a class="dropdown-item" href="#">Director</a>
+							<inertia-link class="dropdown-item" :href="route('history')">Historia</inertia-link>
+							<inertia-link class="dropdown-item" :href="route('members')">Integrantes</inertia-link>
+							<inertia-link class="dropdown-item" :href="route('history')">Director</inertia-link>
 							<inertia-link :href="route('gallery')" class="dropdown-item">
 								Galería de fotos
 							</inertia-link>
 						</div>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="../index.html">Calendario</a>
+						<inertia-link class="nav-link" :href="route('calendar')">Calendario</inertia-link>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="https://github.com/creativetimofficial/now-ui-kit/issues">Programas</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="https://github.com/creativetimofficial/now-ui-kit/issues">Contacto</a>
+						<inertia-link class="nav-link" :href="route('contact')">Contacto</inertia-link>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
+						<a class="nav-link" rel="tooltip" title="Síguenos en Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
 							<i class="fab fa-twitter"></i>
 							<p class="d-lg-none d-xl-none">Twitter</p>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank">
+						<a class="nav-link" rel="tooltip" title="Danos like en Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank">
 							<i class="fab fa-facebook-square"></i>
 							<p class="d-lg-none d-xl-none">Facebook</p>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
+						<a class="nav-link" rel="tooltip" title="Síguenos en Instagram" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
 							<i class="fab fa-instagram"></i>
 							<p class="d-lg-none d-xl-none">Instagram</p>
 						</a>

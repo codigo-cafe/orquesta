@@ -264,7 +264,7 @@ export default {
 				'<div id="content">' +
 				'<div id="siteNotice">' +
 				"</div>" +
-				'<h2 id="firstHeading" class="firstHeading">"+ this.form.name +"</h2>' +
+				'<h2 id="firstHeading" class="firstHeading">"' + this.form.name + '"</h2>' +
 				'<div id="bodyContent">' +
 				"<p><b>"+ this.form.name +"</b>, "+ this.form.description +".</p>" +
 				"</div>" +

@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Category;
 use App\Models\Person;
 use App\Models\Point;
+use App\Models\Promotion;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Carbon\Carbon;
 
 class Event extends Model
 {
@@ -27,6 +29,11 @@ class Event extends Model
         'promotion_id',
         'user_id',
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     public function getCreatedAtAttribute($created_at)
     {
@@ -59,5 +66,15 @@ class Event extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function promotion()
+    {
+        return $this->belongsTo(Promotion::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }

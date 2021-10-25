@@ -2,7 +2,7 @@
     <app-layout :orchestra="orchestra">
         <div class="wrapper">
             <div class="page-header page-header-medium">
-                <div class="page-header-image" data-parallax="true" style="background-image: url('/img/bg-1.jpg');">
+                <div class="page-header-image" data-parallax="true" style="background-image: url('/img/welcome.jpg');">
                 </div>
                 <div class="content-center">
                     <div class="container">
@@ -33,7 +33,7 @@
                     <div class="section-story-overview">
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="image-container image-left" style="background-image: url('/img/img-1.jpg')">
+                                <div class="image-container image-left" style="background-image: url('/img/integrantes-h7.jpg')">
                                     <!-- First image on the left side -->
                                     <p class="blockquote blockquote-primary">"Over the span of the satellite record, Arctic sea ice has been declining significantly, while sea ice in the Antarctichas increased very slightly"
                                         <br>
@@ -41,10 +41,10 @@
                                         <small>-NOAA</small>
                                     </p>
                                 </div>
-                                <div class="image-container" style="background-image: url('/img/img-2.jpg')"></div>
+                                <div class="image-container" style="background-image: url('/img/integrantes-h8.jpg')"></div>
                             </div>
                             <div class="col-md-5">
-                                <div class="image-container image-right" style="background-image: url('/img/img-3.jpg')"></div>
+                                <div class="image-container image-right" style="background-image: url('/img/integrantes-h9.jpg')"></div>
                                 <h3>So what does the new record for the lowest level of winter ice actually mean</h3>
                                 <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever happens with climate change. Even if the Arctic continues to be one of the fastest-warming regions of the world, it will always be plunged into bitterly cold polar dark every winter. And year-by-year, for all kinds of natural reasons, there’s huge variety of the state of the ice.
                                 </p>
@@ -153,6 +153,16 @@ export default {
 
     components: {
         AppLayout,
+    },
+
+    mounted() {
+        this.$nextTick(() => {
+            $('.form-control').on("focus", function() {
+                $(this).parent('.input-group').addClass("input-group-focus");
+            }).on("blur", function() {
+                $(this).parent(".input-group").removeClass("input-group-focus");
+            });
+        });
     },
 }
 </script>

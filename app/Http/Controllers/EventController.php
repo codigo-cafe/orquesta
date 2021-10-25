@@ -5,15 +5,16 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EventRequest;
 use App\Models\Category;
 use App\Models\Event;
+use App\Models\Orchestra;
 use App\Models\Person;
 use App\Models\Point;
 use App\Models\Promotion;
+use Carbon\Carbon;
 use DataTables;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Intervention\Image\Facades\Image;
-use Carbon\Carbon;
 
 class EventController extends Controller
 {
@@ -46,6 +47,15 @@ class EventController extends Controller
         return response()->json(["events" => $eventList]);
     }
 
+    public function getEventsCalendar(Request $request)
+    {
+        $eventList = Event::where('status', true)->get(['id', 'name as title', 'date', 'start_time', 'end_time', 'slug', 'place', 'cover']);
+        foreach($eventList as $event) {
+            $event->classNames = 'shadow';
+        }
+        return response()->json(["events" => $eventList]);
+    }
+
     public function show(Event $event)
     {
         $info = $event->load('user.person');
@@ -58,6 +68,33 @@ class EventController extends Controller
         $info->start_time = Carbon::parse($event->start_time)->format('H:i');
         $info->end_time = Carbon::parse($event->end_time)->format('H:i');
         return $info;
+    }
+
+    public function view(Event $event)
+    {
+        $fecha = Carbon::parse($event->date);
+        $anterior = Event::where('date', Event::where('date', '<', $event->date)->where('status', true)->max('date'))->first();
+        $posterior = Event::where('date', Event::where('date', '>', $event->date)->where('status', true)->min('date'))->first();
+        if ($anterior) {
+            $anterior->date = Carbon::parse($anterior->date)->isoFormat('dddd') . ' ' . Carbon::parse($anterior->date)->format('d') . ' de ' . Carbon::parse($anterior->date)->isoFormat('MMMM');
+        }
+        if ($posterior) {
+            $posterior->date = Carbon::parse($posterior->date)->isoFormat('dddd') . ' ' . Carbon::parse($posterior->date)->format('d') . ' de ' . Carbon::parse($posterior->date)->isoFormat('MMMM');
+        }
+
+        if ($event) {
+            $info = $event->load('people.phones', 'points', 'promotion', 'category');
+            $info->date = $fecha->isoFormat('dddd') . ' ' . $fecha->format('d') . ' de ' . $fecha->isoFormat('MMMM') . ' de ' . $fecha->format('Y');
+
+            return Inertia::render('Client/Event', [
+                'orchestra' => Orchestra::first(),
+                'event' => $info,
+                'anterior' => $anterior,
+                'posterior' => $posterior,
+            ]);
+        } else {
+            abort(404);
+        }
     }
 
     /**

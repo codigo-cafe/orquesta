@@ -15,7 +15,9 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UserController;
 use App\Mail\LoginCredentials;
+use App\Models\Instrument;
 use App\Models\Orchestra;
+use App\Models\Person;
 use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -53,6 +55,31 @@ Route::get('/galeria', function () {
     ]);
 })->name('gallery');
 
+Route::get('/integrantes', function () {
+    return Inertia::render('Client/Members', [
+        'orchestra' => Orchestra::first(),
+        'instruments' => Instrument::whereHas('members')->with('members.person')->get(),
+    ]);
+})->name('members');
+
+Route::get('/historia', function () {
+    return Inertia::render('Client/History', [
+        'orchestra' => Orchestra::first(),
+    ]);
+})->name('history');
+
+Route::get('/calendario', function () {
+    return Inertia::render('Client/Calendar', [
+        'orchestra' => Orchestra::first(),
+    ]);
+})->name('calendar');
+
+Route::get('/contacto', function () {
+    return Inertia::render('Client/Contact', [
+        'orchestra' => Orchestra::first(),
+    ]);
+})->name('contact');
+
 //LISTA DE RUTAS DATATABLES
 Route::middleware(['auth:sanctum', 'verified', 'verify_status', 'verify_route'])->group(function () {
     Route::get('categories/list', [CategoryController::class, 'getCategories'])->name('categories.list');
@@ -69,6 +96,9 @@ Route::middleware(['auth:sanctum', 'verified', 'verify_status', 'verify_route'])
     Route::get('roles/list', [RoleController::class, 'getRoles'])->name('roles.list');
     Route::get('permissions/list', [PermissionController::class, 'getPermissions'])->name('permissions.list');
 });
+
+Route::get('calendar/list', [EventController::class, 'getEventsCalendar'])->name('calendar.list');
+Route::get('eventos/{event}', [EventController::class, 'view'])->name('event.view');
 
 Route::middleware(['auth:sanctum', 'verified', 'verify_status'])->group(function () {
     Route::resource('orchestra', OrchestraController::class)->except(['edit', 'store', 'show', 'create', 'destroy'])->names([
