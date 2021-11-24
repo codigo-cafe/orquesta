@@ -36,7 +36,7 @@ class EventController extends Controller
 
     public function getEvents(Request $request)
     {
-        $eventList = Event::get(['id', 'name as title', 'date', 'status']);
+        $eventList = Event::get(['id', 'name as title', 'date', 'status', 'slug']);
         foreach($eventList as $event) {
             if ($event->status) {
                 $event->classNames = 'bg-gradient-success border-success shadow';

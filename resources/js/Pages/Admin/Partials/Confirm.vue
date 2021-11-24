@@ -38,7 +38,7 @@
         methods: {
             confirm() {
                 if (this.options.url == 'events.move') {
-                    axios.put(this.route(this.options.url, this.data.id), {
+                    axios.put(this.route(this.options.url, this.data.extendedProps.slug), {
                         date: this.options.info.event.start
                     })
                     .then(response => {
@@ -47,7 +47,13 @@
                         this.showNotification(response.data.message, response.data.type);
                     })
                 } else {
-                    axios.post(this.route(this.options.url, this.data.id), {
+                    let identificador;
+                    if (this.options.url == 'events.restore' || this.options.url == 'events.destroy') {
+                        identificador = this.data.slug;
+                    } else {
+                        identificador = this.data.id;
+                    }
+                    axios.post(this.route(this.options.url, identificador), {
                         '_method': 'PUT'
                     })
                     .then(response => {

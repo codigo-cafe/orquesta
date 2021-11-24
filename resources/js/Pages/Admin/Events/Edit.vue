@@ -205,8 +205,7 @@ export default {
 	methods: {
 		async submit() {
 			this.disabled = true;
-			console.log(this.form.cover);
-			axios.put(this.route('events.update', this.event.id), this.form)
+			axios.put(this.route('events.update', this.event.slug), this.form)
 			.then(response => {
 				this.disabled = false;
 				this.closeModal();

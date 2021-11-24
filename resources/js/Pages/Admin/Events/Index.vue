@@ -104,10 +104,10 @@ export default {
 		    }
 	    },
 	    eventDragStart(info) {
-	    	console.log(info.event.id);
+	    	//console.log(info.event.id);
 	    },
 	    eventDragStop(info) {
-	    	console.log(info.event.id)
+	    	//console.log(info.event.id)
 	    },
 	    eventDrop(info) {
 		    if (this.hasAnyPermission(['edit_events'])) {
@@ -134,7 +134,7 @@ export default {
 	    show(info) {
 	    	var mensaje = '';
 	    	if (this.hasAnyPermission(['view_events'])) {
-				axios.get(this.route('events.show', info.event.id))
+				axios.get(this.route('events.show', info.event.extendedProps.slug))
 				.then(response => {
 					this.data = response.data;
 				})
@@ -159,7 +159,7 @@ export default {
 	    	//console.log(event)
 	    	var mensaje = '';
 	    	if (this.hasAnyPermission(['edit_events'])) {
-				axios.get(this.route('events.edit', event.id))
+				axios.get(this.route('events.edit', event.slug))
 				.then(response => {
 					this.data = response.data;
 				})
