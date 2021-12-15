@@ -98,6 +98,7 @@ export default {
 		clear() {
 			this.errors = {};
 			this.form.name = '';
+			this.value = '';
 			this.form.classification_id = '';
 		},
 		closeModal() {

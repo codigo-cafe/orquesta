@@ -4,7 +4,7 @@
 			<form @submit.prevent="submit">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h6 class="modal-title" id="ModalLabel">Modificar Categoría</h6>
+						<h6 class="modal-title" id="ModalLabel">Modificar Servicio</h6>
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
 	 						<span aria-hidden="true">×</span>
 	 					</button>

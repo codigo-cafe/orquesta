@@ -5,6 +5,12 @@
                 <div class="card-header text-center pt-4">
                     <h5>Iniciar Sesión</h5>
                 </div>
+                <div class="row">
+                    <div class="col-12">
+                        <img src="/img/profile.png" alt="3B WoMen" class="avatar avatar-xxl shadow-lg d-block mx-auto rounded-circle">
+                    </div>
+                </div>
+                <!--
                 <div class="row px-xl-5 px-sm-4 px-3">
                     <div class="col-3 ms-auto px-1">
                         <a class="btn btn-outline-light w-100" href="javascript:;">
@@ -38,10 +44,11 @@
                         </p>
                     </div>
                 </div>
+                -->
                 <div class="card-body">
                     <form role="form text-left" @submit.prevent="submit" >
                         <div class="form-group mb-3" :class="{ 'has-danger': errors.email }">
-                            <input type="email" class="form-control" :class="{ 'is-invalid': errors.email }" v-model="form.email" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
+                            <input type="email" class="form-control" :class="{ 'is-invalid': errors.email }" v-model="form.email" placeholder="Correo Electrónico" aria-label="Email" aria-describedby="email-addon">
                             <div class="group-error" v-if="errors.email">
                                 <small class="error text-danger">{{ errors.email }}</small>
                             </div>
