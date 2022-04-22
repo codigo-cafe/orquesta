@@ -56,6 +56,24 @@ class EventController extends Controller
         return response()->json(["events" => $eventList]);
     }
 
+    public function getEventsDTReport(Request $request)
+    {
+        //$this->authorize('viewAny', Category::class);
+        if ($request->ajax()) {
+            $can = $request->user() ? $request->user()->getPermissionArray() : [];
+            $model = Event::query()->with('category');
+            return DataTables::eloquent($model)
+            ->editColumn('date', function ($event) {
+                $fecha = Carbon::parse($event->date)->format('d/m/Y');
+                return $fecha;
+            })
+            ->addColumn('can', function ($user) use($can) {
+                return json_decode($can, true);
+            })
+            ->toJson();
+        }
+    }
+
     public function show(Event $event)
     {
         $info = $event->load('user.person');

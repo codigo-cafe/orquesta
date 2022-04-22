@@ -134,6 +134,14 @@
                         </ul>
                     </div>
                 </li>
+                <li class="nav-item" v-if="hasAnyPermission(['view_orchestra'])">
+                    <inertia-link :href="route('reports.events')" class="nav-link" :class="{ 'active' : route().current('reports.*') }">
+                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fas fa-file fa-lg"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Reportes</span>
+                    </inertia-link>
+                </li>
             </ul>
         </div>
     </aside>

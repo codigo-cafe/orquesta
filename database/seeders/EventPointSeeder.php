@@ -23,6 +23,64 @@ class EventPointSeeder extends Seeder
                 'event_id' => 1,
                 'point_id' => 2,
             ),
+
+            array(
+                'event_id' => 2,
+                'point_id' => 1,
+            ),
+            array(
+                'event_id' => 2,
+                'point_id' => 2,
+            ),
+            array(
+                'event_id' => 2,
+                'point_id' => 3,
+            ),
+
+            array(
+                'event_id' => 3,
+                'point_id' => 1,
+            ),
+            array(
+                'event_id' => 3,
+                'point_id' => 3,
+            ),
+
+            array(
+                'event_id' => 4,
+                'point_id' => 1,
+            ),
+            array(
+                'event_id' => 4,
+                'point_id' => 4,
+            ),
+
+            array(
+                'event_id' => 5,
+                'point_id' => 1,
+            ),
+            array(
+                'event_id' => 5,
+                'point_id' => 2,
+            ),
+
+            array(
+                'event_id' => 6,
+                'point_id' => 2,
+            ),
+            array(
+                'event_id' => 6,
+                'point_id' => 4,
+            ),
+            array(
+                'event_id' => 6,
+                'point_id' => 5,
+            ),
+
+            array(
+                'event_id' => 7,
+                'point_id' => 6,
+            ),
         ));
     }
 }

@@ -6,7 +6,7 @@
 					<div class="copyright text-center text-sm text-muted text-lg-left">
 						© <span v-text="year"></span>
 						desarrollado con <i class="fa fa-heart"></i> por
-						<a href="https://www.creative-tim.com" class="font-weight-bold text-dark text-gradient" target="_blank">Miguel Ángel Choque Ramírez</a>.
+						<a href="https://api.whatsapp.com/send?phone=+59178249694&text=Hola%20😃" class="font-weight-bold text-dark text-gradient" target="_blank">Miguel Ángel Choque Ramírez</a>.
 					</div>
 				</div>
 			</div>

@@ -14,7 +14,7 @@
     	<div class="section profile-page">
     		<div class="container">
                 <h3 class="title">DIRECTOR</h3>
-                <p class="description h4">Franz Condori</p>
+                <p class="description h4">Franz Javier Condori Leaño</p>
     			<h3 class="title">MÚSICOS</h3>
                 <div class="three-columns text-center">
                     <template v-for="instrument in instruments">
@@ -26,7 +26,7 @@
                         </template>
                     </template>
                 </div>
-    			<h5 class="description">An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</h5>
+    			<h5 class="description">"Con fuerza de voluntad se puede hacer cualquier cosa. con fuerza de voluntad uno puede determinar su propio destino."</h5>
                 <div class="row text-center">
                     <div class="col-md-4">
                         <img class="rounded img-raised img img-gallery-v" alt="Raised Image" src="/img/integrantes-v1.jpg">

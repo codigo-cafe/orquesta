@@ -46,7 +46,7 @@ class HandleInertiaRequests extends Middleware
 
     public function rootView(Request $request)
     {
-        if ($request->getPathInfo() == '/' || $request->getPathInfo() == '/galeria' || $request->getPathInfo() == '/integrantes' || $request->getPathInfo() == '/historia' || $request->getPathInfo() == '/calendario' || strpos($request->getPathInfo(), 'eventos/') || $request->getPathInfo() == '/contacto') {
+        if ($request->getPathInfo() == '/' || $request->getPathInfo() == '/galeria' || $request->getPathInfo() == '/integrantes' || $request->getPathInfo() == '/director' || $request->getPathInfo() == '/historia' || $request->getPathInfo() == '/calendario' || strpos($request->getPathInfo(), 'eventos/') || $request->getPathInfo() == '/contacto') {
             return 'client';
         }
         return 'admin';

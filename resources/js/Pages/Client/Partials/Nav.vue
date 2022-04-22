@@ -20,7 +20,7 @@
 						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 							<inertia-link class="dropdown-item" :href="route('history')">Historia</inertia-link>
 							<inertia-link class="dropdown-item" :href="route('members')">Integrantes</inertia-link>
-							<inertia-link class="dropdown-item" :href="route('history')">Director</inertia-link>
+							<inertia-link class="dropdown-item" :href="route('director')">Director</inertia-link>
 							<inertia-link :href="route('gallery')" class="dropdown-item">
 								Galería de fotos
 							</inertia-link>
@@ -30,27 +30,31 @@
 						<inertia-link class="nav-link" :href="route('calendar')">Calendario</inertia-link>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="https://github.com/creativetimofficial/now-ui-kit/issues">Programas</a>
-					</li>
-					<li class="nav-item">
 						<inertia-link class="nav-link" :href="route('contact')">Contacto</inertia-link>
 					</li>
+					<!--
 					<li class="nav-item">
 						<a class="nav-link" rel="tooltip" title="Síguenos en Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
 							<i class="fab fa-twitter"></i>
 							<p class="d-lg-none d-xl-none">Twitter</p>
 						</a>
 					</li>
+				-->
 					<li class="nav-item">
-						<a class="nav-link" rel="tooltip" title="Danos like en Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank">
+						<a class="nav-link" rel="tooltip" title="Danos like en Facebook" data-placement="bottom" href="https://www.facebook.com/orquestavivalditarija/" target="_blank">
 							<i class="fab fa-facebook-square"></i>
 							<p class="d-lg-none d-xl-none">Facebook</p>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" rel="tooltip" title="Síguenos en Instagram" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
-							<i class="fab fa-instagram"></i>
-							<p class="d-lg-none d-xl-none">Instagram</p>
+						<a class="nav-link" rel="tooltip" title="Escríbenos al WhatsApp" data-placement="bottom" href="https://api.whatsapp.com/send?phone=59172962410&text=Hola...%20%F0%9F%98%8A" target="_blank">
+							<i class="fab fa-whatsapp"></i>
+							<p class="d-lg-none d-xl-none">WhatsApp</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link btn btn-cafe" rel="tooltip" title="Solo para Administradores" data-placement="bottom" href="/login">
+							<p><i class="fas fa-user"></i> Ingresar</p>
 						</a>
 					</li>
 				</ul>

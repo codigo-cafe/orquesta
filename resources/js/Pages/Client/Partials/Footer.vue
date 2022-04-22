@@ -4,24 +4,24 @@
 			<nav>
 				<ul>
 					<li>
-						<a href="https://www.creative-tim.com">
-							Creative Tim
-						</a>
+						<inertia-link :href="route('home')">
+							Inicio
+						</inertia-link>
 					</li>
 					<li>
-						<a href="http://presentation.creative-tim.com">
-							About Us
-						</a>
+						<inertia-link :href="route('calendar')">
+							Calendario
+						</inertia-link>
 					</li>
 					<li>
-						<a href="http://blog.creative-tim.com">
-							Blog
-						</a>
+						<inertia-link :href="route('contact')">
+							Contacto
+						</inertia-link>
 					</li>
 				</ul>
 			</nav>
 			<div class="copyright" id="copyright">
-				Copyright © <span v-text="year"></span>, desarrollado con <i class="fas fa-heart"></i> por <a href="https://api.whatsapp.com/send?phone=+59178249694&text=Hola,%20vengo%20desde%20la%20página%20de%20la%20*Orquesta%20Vivaldi%20Tarija*%20😃" class="font-weight-bold text-dark text-gradient" target="_blank">Miguel Ángel Choque Ramírez</a>.
+				Copyright © <span v-text="year"></span>, desarrollado con <i class="fas fa-heart"></i> por <a href="https://api.whatsapp.com/send?phone=+59178249694&text=Hola%20😃" class="font-weight-bold text-dark text-gradient" target="_blank">Miguel Ángel Choque Ramírez</a>.
 			</div>
 		</div>
 	</footer>

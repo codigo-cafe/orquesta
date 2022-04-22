@@ -9,42 +9,13 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-5 mx-auto">
+                        <div class="col-md-6 mx-auto">
                             <h2 class="title">Envíanos un mensaje</h2>
                             <p class="description">Puede contactarnos con cualquier tema relacionado con nuestros Servicios. Nos pondremos en contacto contigo lo antes posible.<br><br>
                             </p>
-                            <form role="form" id="contact-form" method="post">
-                                <label>Nombre</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="far fa-user"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="Tu nombre completo..." aria-label="Tu nombre completo..." autocomplete="name">
-                                </div>
-                                <label>Correro Electrónico</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="far fa-envelope"></i></span>
-                                    </div>
-                                    <input type="email" class="form-control" placeholder="Tu corre electrónico..." aria-label="Tu corre electrónico..." autocomplete="email">
-                                </div>
-                                <label>Número Telefónico</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-mobile-alt"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="Tu número telefónico..." autocomplete="Tu número telefónico...">
-                                </div>
-                                <div class="form-group">
-                                    <label>Tu mensaje</label>
-                                    <textarea name="message" class="form-control" id="message" rows="6" placeholder="Cuéntanos un poco sobre lo que deseas comunicarnos..."></textarea>
-                                </div>
-                                <div class="submit text-center">
-                                    <button type="submit" class="btn btn-primary btn-raised btn-round">Contáctanos</button>
-                                </div>
-                            </form>
+                            <div id="map" class="shadow vh-60"></div>
                         </div>
-                        <div class="col-md-5 mx-auto">
+                        <div class="col-md-6 mx-auto">
                             <div class="info info-horizontal pt-3">
                                 <div class="icon icon-primary text-danger">
                                     <i class="fas fa-map-marker-alt"></i>
@@ -64,8 +35,11 @@
                                 <div class="description">
                                     <h4 class="info-title">Danos una llamada</h4>
                                     <p>
-                                        <span class="font-weight-bold text-cafe">Franz Condori</span><br>
-                                        {{ orchestra.phone }}
+                                        <span class="font-weight-normal">Franz Javier Condori Leaño</span><br>
+                                        <a href="https://api.whatsapp.com/send?phone=59172962410&text=Hola...%20%F0%9F%98%8A" class="text-cafe" target="_blank">
+                                            <i class="fab fa-whatsapp"></i>
+                                            {{ orchestra.phone }}
+                                        </a>
                                     </p>
                                 </div>
                             </div>
@@ -77,18 +51,11 @@
                                     <h4 class="info-title">Sobre nosotros</h4>
                                     <p>
                                         {{ orchestra.name }}<br>
-                                        {{ orchestra.email }}<br>
+                                        <span class="text-cafe">{{ orchestra.email }}</span><br><br>
                                         {{ orchestra.description }}
                                     </p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12 mt-4">
-                            <div id="map" class="shadow vh-60"></div>
                         </div>
                     </div>
                 </div>
@@ -211,7 +178,7 @@ export default {
                     }, {
                         "elementType": "labels.icon",
                         "stylers": [{
-                            "visibility": "off"
+                            "visibility": "on"
                         }]
                     }, {
                         "featureType": "transit",

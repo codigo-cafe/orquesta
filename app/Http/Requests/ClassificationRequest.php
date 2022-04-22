@@ -23,8 +23,13 @@ class ClassificationRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|max:45',
-        ];
+        $rules = [];
+
+        if ($this->method() === 'PUT') {
+            $rules['name'] = 'required|max:45|unique:classifications,name,' . $this->route('classification')->id;
+        } else if($this->method() === 'POST'){
+            $rules['name'] = 'required|max:45|unique:classifications,name';
+        }
+        return $rules;
     }
 }

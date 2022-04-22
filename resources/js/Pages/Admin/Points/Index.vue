@@ -3,7 +3,7 @@
 		<div class="col-12 mt-2">
 			<div class="card">
 				<div class="card-body">
-					<h6 class="card-title text-dark text-gradient">Lista de Puntos de Ventas</h6>
+					<h6 class="card-title text-dark text-gradient">Lista de Puntos de Venta</h6>
 					<div class="d-flex justify-content-end" v-if="hasAnyPermission(['create_points'])">
 						<button type="button" class="btn btn-dim" @click="openModal">
 							<i class="fas fa-plus"></i> Registrar Punto de Venta
@@ -171,6 +171,7 @@ export default {
 		datatables() {
 			this.$nextTick(() => {
 				const self = this;
+				$.fn.dataTable.ext.errMode = 'none';
 				self.table = $('#datatables').DataTable({
 					"processing": true,
 					"serverSide": true,
@@ -196,6 +197,8 @@ export default {
 						}
 					},
 					{
+						"searchable": false,
+						"orderable": false,
 						"targets": [6],
 						"className": "text-right",
 						"data": null,
@@ -229,7 +232,7 @@ export default {
 					"language": {
 						"lengthMenu": '_MENU_',
 						"sSearch": '',
-						"emptyTable": "Ningun dato disponible en esta tabla",
+						"emptyTable": "Ningún dato disponible en esta tabla",
 						"processing": "Procesando...",
 						"sInfo": "Mostrando _TOTAL_ registros",
 						"sSearchPlaceholder": "Buscar...",

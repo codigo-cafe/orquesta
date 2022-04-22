@@ -23,8 +23,13 @@ class TypeRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|max:45',
-        ];
+        $rules = [];
+
+        if ($this->method() === 'PUT') {
+            $rules['name'] = 'required|max:45|unique:types,name,' . $this->route('type')->id;
+        } else if($this->method() === 'POST'){
+            $rules['name'] = 'required|max:45|unique:types,name';
+        }
+        return $rules;
     }
 }

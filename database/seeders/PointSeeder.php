@@ -17,14 +17,38 @@ class PointSeeder extends Seeder
     {
         DB::table('points')->insert(array(
             array(
-                'name' => 'TEATRO DE LA CULTURA TARIJA',
+                'name' => 'Teatro de la cultura Tarija',
                 'direction' => 'Av. Junin Casa Dorada',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ),
             array(
-                'name' => 'Restaurante EL MARQUÉS',
+                'name' => 'Restaurante El Marques',
                 'direction' => 'Calle Madrid Plaza Luis de fuentes',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ),
+            array(
+                'name' => 'Hotel Miraflores',
+                'direction' => 'Av La paz esquina Belgrano',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ),
+            array(
+                'name' => 'Excalibur Pub',
+                'direction' => 'Calle Junin entre Bolívar e Ingavi',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ),
+            array(
+                'name' => 'Hotel Boutique Vendimia',
+                'direction' => "Calle O'Connor entre calle Ingavi y la Madrid",
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ),
+            array(
+                'name' => 'Farmacia Villa Nueva',
+                'direction' => "Calle Junin entre Bolívar",
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ),

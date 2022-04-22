@@ -23,9 +23,15 @@ class InstrumentRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|max:45',
+        $rules = [
             'classification_id' => 'required',
         ];
+
+        if ($this->method() === 'PUT') {
+            $rules['name'] = 'required|max:45|unique:instruments,name,' . $this->route('instrument')->id;
+        } else if($this->method() === 'POST'){
+            $rules['name'] = 'required|max:45|unique:instruments,name';
+        }
+        return $rules;
     }
 }

@@ -221,6 +221,10 @@ export default {
 						this.disabled = false;
 						this.showNotification('Perfil de la orquesta actualizado correctamente', 'success')
 					},
+					onError:() => {
+						this.disabled = false;
+						this.showNotification('Error de validación, por favor revise su información', 'warning')
+					},
 				});
 			}
 		},

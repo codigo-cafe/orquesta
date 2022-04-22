@@ -10,6 +10,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\PointController;
 use App\Http\Controllers\PromotionController;
+use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TypeController;
@@ -18,6 +19,7 @@ use App\Mail\LoginCredentials;
 use App\Models\Instrument;
 use App\Models\Orchestra;
 use App\Models\Person;
+use App\Models\Service;
 use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +48,7 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
         'orchestra' => Orchestra::first(),
+        'services' => Service::where('status', true)->get(),
     ]);
 })->name('home');
 
@@ -61,6 +64,12 @@ Route::get('/integrantes', function () {
         'instruments' => Instrument::whereHas('members')->with('members.person')->get(),
     ]);
 })->name('members');
+
+Route::get('/director', function () {
+    return Inertia::render('Client/Director', [
+        'orchestra' => Orchestra::first(),
+    ]);
+})->name('director');
 
 Route::get('/historia', function () {
     return Inertia::render('Client/History', [
@@ -91,6 +100,7 @@ Route::middleware(['auth:sanctum', 'verified', 'verify_status', 'verify_route'])
     Route::get('services/list', [ServiceController::class, 'getServices'])->name('services.list');
     Route::get('types/list', [TypeController::class, 'getTypes'])->name('types.list');
     Route::get('events/list', [EventController::class, 'getEvents'])->name('events.list');
+    Route::get('events/listreport', [EventController::class, 'getEventsDTReport'])->name('events.listreport');
     Route::get('points/list', [PointController::class, 'getPoints'])->name('points.list');
     Route::get('users/list', [UserController::class, 'getUsers'])->name('users.list');
     Route::get('roles/list', [RoleController::class, 'getRoles'])->name('roles.list');
@@ -221,4 +231,11 @@ Route::middleware(['auth:sanctum', 'verified', 'verify_status'])->group(function
     Route::resource('permissions', PermissionController::class)->only(['index'])->names([
         'index' => 'permissions.index',
     ]);
+
+    Route::get('reports/events', [ReportsController::class, 'events'])->name('reports.events');
+    Route::get('reports/points', [ReportsController::class, 'points'])->name('reports.points');
+    Route::get('reports/services', [ReportsController::class, 'services'])->name('reports.services');
+    Route::get('reports/promotions', [ReportsController::class, 'promotions'])->name('reports.promotions');
+    Route::get('reports/members', [ReportsController::class, 'members'])->name('reports.members');
+    Route::get('reports/users', [ReportsController::class, 'users'])->name('reports.users');
 });

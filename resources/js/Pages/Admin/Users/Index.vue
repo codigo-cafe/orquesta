@@ -197,23 +197,26 @@ export default {
 		datatables() {
 			this.$nextTick(() => {
 				const self = this;
+				$.fn.dataTable.ext.errMode = 'none';
 				self.table = $('#datatables').DataTable({
 					"processing": true,
 					"serverSide": true,
 					"ajax": "users/list",
 					"columns": [
 					{data : 'id'},
-					{data : null, "searchable": false, "orderable": false,},
+					{data : null, orderable: false, searchable: false},
 					{data : 'person.name'},
 					{data : 'person.surnames'},
 					{data : 'email'},
-					{data : 'roles[, ].name', "searchable": false, "orderable": false,},
+					{data : 'roles[, ].name', orderable: false, searchable: false},
 					{data : 'status'},
 					{data : 'created_at'},
 					{data : 'updated_at'},
 					],
 					"columnDefs": [
 					{
+						"searchable": false,
+						"orderable": false,
 						"targets": [1],
 						"data": null,
 						"render": function(data,type,full){
@@ -271,7 +274,7 @@ export default {
 					"language": {
 						"lengthMenu": '_MENU_',
 						"sSearch": '',
-						"emptyTable": "Ningun dato disponible en esta tabla",
+						"emptyTable": "Ningún dato disponible en esta tabla",
 						"processing": "Procesando...",
 						"sInfo": "Mostrando _TOTAL_ registros",
 						"sSearchPlaceholder": "Buscar...",

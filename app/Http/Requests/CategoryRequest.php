@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CategoryRequest extends FormRequest
 {
@@ -23,8 +24,13 @@ class CategoryRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|max:45',
-        ];
+        $rules = [];
+
+        if ($this->method() === 'PUT') {
+            $rules['name'] = 'required|max:45|unique:categories,name,' . $this->route('category')->id;
+        } else if($this->method() === 'POST'){
+            $rules['name'] = 'required|max:45|unique:categories,name';
+        }
+        return $rules;
     }
 }

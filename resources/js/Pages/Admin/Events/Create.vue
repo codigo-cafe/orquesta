@@ -215,7 +215,7 @@ export default {
 			data.append('promotion_id', this.form.promotion_id);
 			data.append('people', this.form.people);
 			data.append('points', this.form.points);
-			console.log(this.form.date + "  " + data.date)
+			console.log(moment(this.form.date).format('DD/MM/YYYY'))
 
 			axios.post(this.route('events.store'), data)
 			.then(response => {
@@ -248,7 +248,6 @@ export default {
 			this.form.description = '';
             this.form.cover = null;
             this.form.price = '';
-			this.form.date = '';
             this.form.start_time = '';
             this.form.end_time = '';
             this.form.place = '';

@@ -1,9 +1,9 @@
 <template>
 	<nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3  navbar-transparent mt-4">
         <div class="container">
-            <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white" href="../pages/dashboard.html">
+            <inertia-link class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white" :href="route('login')">
                 Orquesta Vivaldi Tarija
-            </a>
+            </inertia-link>
             <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon mt-2">
                     <span class="navbar-toggler-bar bar1"></span>
@@ -14,7 +14,7 @@
             <div class="collapse navbar-collapse" id="navigation">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center me-2 active" aria-current="page" href="../pages/dashboard.html">
+                        <a class="nav-link d-flex align-items-center me-2 active" aria-current="page" href="/">
                             <i class="fas fa-guitar opacity-7 me-1"></i>
                             Perfil
                         </a>

@@ -2303,7 +2303,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 400;
+  font-weight: 500;
 }
 
 small {
@@ -2382,7 +2382,7 @@ h6,
 
 p {
   line-height: 1.61em;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 1.2em;
 }
 
@@ -6229,7 +6229,7 @@ a.fc-daygrid-event:hover {
 .info {
   max-width: 360px;
   margin: 0 auto;
-  padding: 70px 0 30px;
+  padding: 0px 0 0px;
   text-align: center;
 }
 

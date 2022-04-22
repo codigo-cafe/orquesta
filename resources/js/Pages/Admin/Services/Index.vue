@@ -171,6 +171,7 @@ export default {
 		datatables() {
 			this.$nextTick(() => {
 				const self = this;
+				$.fn.dataTable.ext.errMode = 'none';
 				self.table = $('#datatables').DataTable({
 					"processing": true,
 					"serverSide": true,
@@ -202,6 +203,8 @@ export default {
 						}
 					},
 					{
+						"searchable": false,
+						"orderable": false,
 						"targets": [6],
 						"className": "text-right",
 						"data": null,
@@ -235,7 +238,7 @@ export default {
 					"language": {
 						"lengthMenu": '_MENU_',
 						"sSearch": '',
-						"emptyTable": "Ningun dato disponible en esta tabla",
+						"emptyTable": "Ningún dato disponible en esta tabla",
 						"processing": "Procesando...",
 						"sInfo": "Mostrando _TOTAL_ registros",
 						"sSearchPlaceholder": "Buscar...",

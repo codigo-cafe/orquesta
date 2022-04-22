@@ -31,12 +31,14 @@ class RoleRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'name' => 'required|unique:roles,name',
             'guard_name' => 'required',
             'permissions' => 'required',
         ];
+
         if ($this->method() === 'PUT') {
-            $rules['name'] = 'required|unique:roles,name,' . $this->route('role')->id;
+            $rules['name'] = 'required|max:45|unique:roles,name,' . $this->route('role')->id;
+        } else if($this->method() === 'POST'){
+            $rules['name'] = 'required|max:45|unique:roles,name';
         }
         return $rules;
     }

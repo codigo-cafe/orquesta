@@ -23,9 +23,15 @@ class PointRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|max:80',
+        $rules = [
             'direction' => 'required|max:255',
         ];
+
+        if ($this->method() === 'PUT') {
+            $rules['name'] = 'required|max:80|unique:points,name,' . $this->route('point')->id;
+        } else if($this->method() === 'POST'){
+            $rules['name'] = 'required|max:80|unique:points,name';
+        }
+        return $rules;
     }
 }

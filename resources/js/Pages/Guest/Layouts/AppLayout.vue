@@ -3,7 +3,7 @@
         <Nav></Nav>
         <!-- Page Content -->
         <section>
-            <div class="page-header align-items-start section-height-50 pt-5 pb-11 m-3 border-radius-lg" style="background-image: url('img/login-md-3.jpg');">
+            <div class="page-header align-items-start section-height-50 pt-5 pb-11 m-3 border-radius-lg" style="background-image: url('/img/login-md-3.jpg');">
                 <span class="mask bg-gradient-dark opacity-6"></span>
                 <div class="container">
                     <div class="row justify-content-center">

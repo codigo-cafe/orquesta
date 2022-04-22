@@ -61,13 +61,14 @@ class UserController extends Controller
     {
         //$this->authorize('create', User::class);
         $data = $request->all();
-        $data['password'] = User::generatePassword();
+        $password_plain = User::generatePassword();
+        $data['password'] = bcrypt($password_plain);
 
         $user = User::create($data);
 
         $user->assignRole($request->role_id);
 
-        UserWasCreated::dispatch($user, $data['password']);
+        UserWasCreated::dispatch($user, $password_plain);
 
         return response()->json([
             'type' => 'success',

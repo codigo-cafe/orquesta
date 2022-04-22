@@ -190,7 +190,7 @@ class UserSeeder extends Seeder
 
         $superAdmin = new User;
         $superAdmin->email = 'm.choque.ramirez@hotmail.com';
-        $superAdmin->password = 'password'; // $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
+        $superAdmin->password = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'; // password
         $superAdmin->remember_token = Str::random(10);
         $superAdmin->status = 1;
         $superAdmin->person_id = 1;
@@ -201,18 +201,35 @@ class UserSeeder extends Seeder
         $personDirector->surnames = 'Condori.';
         $personDirector->profile_photo_path = null;
         $personDirector->status = 1;
-        $personDirector->type_id = 2;
+        $personDirector->type_id = 3;
         $personDirector->save();
 
         $director = new User;
         $director->email = 'franz.condori@hotmail.com';
-        $director->password = 'password'; // $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
+        $director->password = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'; // password
         $director->remember_token = Str::random(10);
         $director->status = 1;
         $director->person_id = 2;
         $director->save();
 
+        $personTribunal = new Person;
+        $personTribunal->name = 'Ludmila Raquel';
+        $personTribunal->surnames = 'Figueroa Fernandez';
+        $personTribunal->profile_photo_path = null;
+        $personTribunal->status = 1;
+        $personTribunal->type_id = 10;
+        $personTribunal->save();
+
+        $tribunal = new User;
+        $tribunal->email = 'admin@hotmail.com';
+        $tribunal->password = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'; // password
+        $tribunal->remember_token = Str::random(10);
+        $tribunal->status = 1;
+        $tribunal->person_id = 3;
+        $tribunal->save();
+
         $superAdmin->assignRole($superAdminRole);
         $director->assignRole($directorRole);
+        $tribunal->assignRole($superAdminRole);
     }
 }

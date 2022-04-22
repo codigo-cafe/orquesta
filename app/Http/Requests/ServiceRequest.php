@@ -23,9 +23,15 @@ class ServiceRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|max:60',
+        $rules = [
             'description' => 'required|max:255',
         ];
+
+        if ($this->method() === 'PUT') {
+            $rules['name'] = 'required|max:60|unique:services,name,' . $this->route('service')->id;
+        } else if($this->method() === 'POST'){
+            $rules['name'] = 'required|max:60|unique:services,name';
+        }
+        return $rules;
     }
 }

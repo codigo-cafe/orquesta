@@ -47,6 +47,12 @@
     <script src="/js/core/popper.min.js"></script>
     <script src="/js/core/bootstrap.min.js"></script>
     <script src="/js/plugins/jquery.dataTables.min.js"></script>
+    <script src="/js/plugins/dataTables.buttons.min.js"></script>
+    <script src="/js/plugins/jszip.min.js"></script>
+    <script src="/js/plugins/pdfmake.min.js"></script>
+    <script src="/js/plugins/vfs_fonts.js"></script>
+    <script src="/js/plugins/buttons.html5.min.js"></script>
+    <script src="/js/plugins/buttons.print.min.js"></script>
     <script src="/js/plugins/bootstrap-notify.js"></script>
     <script src="/js/soft-ui-dashboard.min.js?v=1.0.2"></script>
 </body>

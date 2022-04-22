@@ -14579,7 +14579,7 @@ label,
 }
 
 .bg-gradient-primary {
-  background-image: linear-gradient(310deg, var(--bs-purple) 0%, var(--bs-pink) 100%);
+  background-image: linear-gradient(310deg, var(--bs-cafe) 0%, var(--bs-gray) 100%);
 }
 
 .bg-gradient-secondary {

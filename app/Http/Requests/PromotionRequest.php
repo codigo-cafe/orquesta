@@ -23,12 +23,18 @@ class PromotionRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|max:60',
+        $rules = [
             'description' => 'required|max:255',
             'discount' => 'required|numeric|min:0|max:255',
             'date_start' => 'required',
             'date_end' => 'required',
         ];
+
+        if ($this->method() === 'PUT') {
+            $rules['name'] = 'required|max:60|unique:promotions,name,' . $this->route('promotion')->id;
+        } else if($this->method() === 'POST'){
+            $rules['name'] = 'required|max:60|unique:promotions,name';
+        }
+        return $rules;
     }
 }
