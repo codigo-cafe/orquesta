@@ -21,7 +21,7 @@
                     <form @submit.prevent="submit">
                         <div>
                             <div class="form-group mb-3" :class="{ 'has-danger': errors.email }">
-                            <input type="email" class="form-control" :class="{ 'is-invalid': errors.email }" v-model="form.email" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
+                            <input type="email" class="form-control" :class="{ 'is-invalid': errors.email }" v-model="form.email" placeholder="Correo Electrónico" aria-label="Email" aria-describedby="email-addon">
                                 <div class="group-error" v-if="errors.email">
                                     <small class="error text-danger">{{ errors.email }}</small>
                                 </div>

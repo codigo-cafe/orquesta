@@ -16,7 +16,7 @@
                     <form @submit.prevent="submit">
                         <div>
                             <div class="form-group" :class="{ 'has-danger': errors.email }">
-                                <input type="email" class="form-control" :class="{ 'is-invalid': errors.email }" v-model="form.email" placeholder="Email" aria-label="Email" aria-describedby="email-addon" required autofocus>
+                                <input type="email" class="form-control" :class="{ 'is-invalid': errors.email }" v-model="form.email" placeholder="Correo Electrónico" aria-label="Email" aria-describedby="email-addon" required autofocus>
                                 <div class="group-error" v-if="errors.email">
                                     <small class="error text-danger">{{ errors.email }}</small>
                                 </div>
@@ -28,7 +28,7 @@
                                 </div>
                             </div>
                             <div class="form-group mb-3" :class="{ 'has-danger': errors.password_confirmation }">
-                                <input type="password" class="form-control" :class="{ 'is-invalid': errors.password_confirmation }" v-model="form.password_confirmation" placeholder="Contraseña" aria-label="Password" aria-describedby="password-addon" required autocomplete="new-password">
+                                <input type="password" class="form-control" :class="{ 'is-invalid': errors.password_confirmation }" v-model="form.password_confirmation" placeholder="Confirmar Contraseña" aria-label="Password" aria-describedby="password-addon" required autocomplete="new-password">
                                 <div class="group-error" v-if="errors.password_confirmation">
                                     <small class="error text-danger">{{ errors.password_confirmation }}</small>
                                 </div>
