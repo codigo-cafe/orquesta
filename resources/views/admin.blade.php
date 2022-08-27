@@ -15,7 +15,8 @@
     <link href="/css/nucleo-icons.css" rel="stylesheet" />
     <link href="/css/nucleo-svg.css" rel="stylesheet" />
     <!-- Font Awesome Icons -->
-    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script> -->
+    <link href="/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet" />
     <link href="/css/nucleo-svg.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="/css/flatpickr.css">

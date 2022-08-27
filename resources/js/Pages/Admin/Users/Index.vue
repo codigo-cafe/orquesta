@@ -5,9 +5,23 @@
 				<div class="card-body">
 					<h6 class="card-title text-dark text-gradient">Lista de Usuarios del Sistema</h6>
 					<div class="d-flex justify-content-end" v-if="hasAnyPermission(['create_users'])">
-						<button type="button" class="btn btn-dim" @click="openModal">
-							<i class="fas fa-plus"></i> Registrar Usuario
-						</button>
+						<div class="dropdown">
+							<a href="javascript:;" class="btn btn-dim dropdown-toggle " data-bs-toggle="dropdown" id="menuUser">
+								<i class="fas fa-plus"></i> Registrar Usuario
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="menuUser">
+								<li>
+									<span class="dropdown-item" @click="openModal('auto')">
+										Contraseña autogenerada
+									</span>
+								</li>
+								<li>
+									<span class="dropdown-item" @click="openModal('manual')">
+										Contraseña manual
+									</span>
+								</li>
+							</ul>
+						</div>
 					</div>
 					<div class="toolbar">
 						<!--        Here you can write extra buttons/actions for the toolbar              -->
@@ -51,21 +65,24 @@
 			</div>
 		</div>
 		<!-- Modal Create -->
-		<modal-create :people="people" :roles="roles" :reload="reload" :showNotification="showNotification"></modal-create>
+		<modal-create-auto :people="people" :roles="roles" :reload="reload" :showNotification="showNotification"></modal-create-auto>
+		<modal-create-manual :people="people" :roles="roles" :reload="reload" :showNotification="showNotification"></modal-create-manual>
 		<modal-edit :people="people" :roles="roles" :data="data" :reload="reload" :showNotification="showNotification"></modal-edit>
 		<modal-confirm :data="data" :options="options" :reload="reload" :showNotification="showNotification"></modal-confirm>
 	</app-layout>
 </template>
 <script>
 import AppLayout from '@/Pages/Admin/Layouts/AppLayout'
-import ModalCreate from '@/Pages/Admin/Users/Create'
+import ModalCreateAuto from '@/Pages/Admin/Users/CreateAuto'
+import ModalCreateManual from '@/Pages/Admin/Users/CreateManual'
 import ModalEdit from '@/Pages/Admin/Users/Edit'
 import ModalConfirm from '@/Pages/Admin/Partials/Confirm'
 
 export default {
 	components: {
 		AppLayout,
-		ModalCreate,
+		ModalCreateAuto,
+		ModalCreateManual,
 		ModalEdit,
 		ModalConfirm,
 	},
@@ -103,7 +120,7 @@ export default {
 			this.table.ajax.reload( null, false );
 		},
 
-		openModal() {
+		openModal(mode) {
 			if (this.hasAnyPermission(['create_users'])) {
 				axios.get(this.route('users.create'))
 				.then(response => {
@@ -113,10 +130,17 @@ export default {
 				    console.log(error);
 				})
 				.then(function () {
-				    var myModal = new bootstrap.Modal(document.getElementById('ModalCreate'), {
-						keyboard: false
-					});
-					myModal.show();
+					if (mode === 'auto') {
+						var myModalAuto = new bootstrap.Modal(document.getElementById('ModalCreateAuto'), {
+							keyboard: false
+						});
+						myModalAuto.show();
+					} else if(mode === 'manual'){
+						var myModalManual = new bootstrap.Modal(document.getElementById('ModalCreateManual'), {
+							keyboard: false
+						});
+						myModalManual.show();
+					}
 				});
 			}
 		},
@@ -223,7 +247,7 @@ export default {
 							if (data.person.profile_photo_path) {
 								return '<img class="avatar avatar-sm rounded-circle shadow" src="'+data.person.profile_photo_path+'" alt="off_white">';
 							} else {
-								return '<img class="avatar avatar-sm rounded-circle shadow" src="'+data.profile_photo_url+'" alt="off_white">';
+								return '<img class="avatar avatar-sm rounded-circle shadow" src="/img/profile.png" alt="off_white">';
 							}
 						}
 					},

@@ -182,8 +182,10 @@ export default {
 				this.photoPreview = value.profile_photo_path;
 				this.img = value.profile_photo_path;
 			} else {
-				this.photoPreview = value.profile_photo_url;
-				this.img = value.profile_photo_url;
+				//this.photoPreview = value.profile_photo_url;
+				//this.img = value.profile_photo_url;
+				this.photoPreview = '/img/profile.png';
+				this.img = '/img/profile.png';
 			}
 			setTimeout(() => {
 				this.slide = true;

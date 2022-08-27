@@ -14459,8 +14459,8 @@ fieldset:disabled .btn {
 
 .form-check:not(.form-switch) .form-check-input[type="checkbox"]:after {
   transition: opacity 0.25s ease-in-out;
-  font-family: "FontAwesome";
-  content: "\f00c";
+  font-family: "Font Awesome 5 Free";
+  content: "✓";
   width: 100%;
   height: 100%;
   color: #fff;

@@ -228,7 +228,8 @@ export default {
 			if (this.person.profile_photo_path) {
 				this.photoPreview = this.person.profile_photo_path;
 			} else {
-				this.photoPreview = this.person.profile_photo_url;
+				//this.photoPreview = this.person.profile_photo_url;
+				this.photoPreview = '/img/profile.png';
 			}
 		},
 		clear() {
@@ -260,7 +261,8 @@ export default {
 			if (i_name == '' && i_surnames == '') {
 				this.photoPreview = '/img/profile.png'
 			} else if(this.img == '') {
-				this.photoPreview = 'https://ui-avatars.com/api/?name=' + i_name + ' ' + i_surnames + '&color=7F9CF5&background=EBF4FF';
+				//this.photoPreview = 'https://ui-avatars.com/api/?name=' + i_name + ' ' + i_surnames + '&color=7F9CF5&background=EBF4FF';
+				this.photoPreview = '/img/profile.png'
 			}
 		},
 		selectNewPhoto() {

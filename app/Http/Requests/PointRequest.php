@@ -25,6 +25,8 @@ class PointRequest extends FormRequest
     {
         $rules = [
             'direction' => 'required|max:255',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
         ];
 
         if ($this->method() === 'PUT') {

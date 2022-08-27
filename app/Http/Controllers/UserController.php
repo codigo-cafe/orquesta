@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\UserWasCreated;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\UserManualRequest;
 use App\Models\Person;
 use App\Models\User;
 use DataTables;
@@ -69,6 +70,28 @@ class UserController extends Controller
         $user->assignRole($request->role_id);
 
         UserWasCreated::dispatch($user, $password_plain);
+
+        return response()->json([
+            'type' => 'success',
+            'message' => 'Usuario registrado correctamente',
+        ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeManual(UserManualRequest $request)
+    {
+        //$this->authorize('create', User::class);
+        $data = $request->all();
+        $data['password'] = bcrypt($request->password);
+
+        $user = User::create($data);
+
+        $user->assignRole($request->role_id);
 
         return response()->json([
             'type' => 'success',

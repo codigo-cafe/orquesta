@@ -17,6 +17,8 @@ class CreatePointsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('direction');
+            $table->decimal('latitude', 9, 6);
+            $table->decimal('longitude', 9, 6);
             $table->boolean('status')->default(1);
             $table->foreignId('event_id')->nullable()->references('id')->on('events')->onDelete(null);
             $table->timestamps();

@@ -151,8 +151,10 @@ export default {
 				this.photoPreview = this.user.person.profile_photo_path;
 				this.img = this.user.person.profile_photo_path;
 			} else {
-				this.photoPreview = this.user.person.profile_photo_url;
-				this.img = this.user.person.profile_photo_url;
+				//this.photoPreview = this.user.person.profile_photo_url;
+				//this.img = this.user.person.profile_photo_url;
+				this.photoPreview = '/img/profile.png';
+				this.img = '/img/profile.png';
 			}
 
 			this.form.email = this.user.email;
@@ -179,7 +181,8 @@ export default {
 		onChange(){
 			var i_name = this.form.name.charAt(0);
 			var i_surnames = this.form.surnames.charAt(0);
-			this.photo = 'https://ui-avatars.com/api/?name=' + i_name + ' ' + i_surnames + '&color=7F9CF5&background=EBF4FF';
+			//this.photo = 'https://ui-avatars.com/api/?name=' + i_name + ' ' + i_surnames + '&color=7F9CF5&background=EBF4FF';
+			this.photo = '/img/profile.png';
 		},
 		onChangeRole (value) {
 			this.form.role_id = value.id;

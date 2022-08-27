@@ -24,6 +24,37 @@
 								<small class="error text-danger">{{ errors.direction[0] }}</small>
 							</div>
 						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group bmd-form-group" :class="{ 'has-danger': errors.latitude }">
+									<label for="e_latitude">Latitud</label>
+									<div class="input-group">
+										<span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+										<input type="text" class="form-control" id="e_latitude" placeholder="Nombre de la encargada" v-model="form.latitude">
+									</div>
+									<div v-if="errors.latitude">
+										<small class="error text-danger">{{ errors.latitude }}</small>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group bmd-form-group" :class="{ 'has-danger': errors.longitude }">
+									<label for="e_longitude">Longitud</label>
+									<div class="input-group">
+										<span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+										<input type="text" class="form-control" id="e_longitude" placeholder="Nombre de la encargada" v-model="form.longitude">
+									</div>
+									<div v-if="errors.longitude">
+										<small class="error text-danger">{{ errors.longitude }}</small>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12 mt-2">
+								<div id="e_map" class="vh-50"></div>
+							</div>
+						</div>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-bs-dismiss="modal" :disabled="disabled">Cancelar</button>
@@ -43,6 +74,8 @@
 	</div>
 </template>
 <script>
+import { Loader } from "@googlemaps/js-api-loader"
+
 export default {
 	props: ['data', 'reload', 'showNotification'],
 
@@ -52,7 +85,11 @@ export default {
 			form: {
 				name: '',
 				direction: '',
+				latitude: '',
+				longitude: '',
 			},
+			mapa: '',
+			marker: '',
 			errors: {},
 			mensaje: '',
 			disabled: false,
@@ -60,6 +97,7 @@ export default {
 	},
 
 	mounted() {
+		this.googlemaps();
 		var ModalEditHidden = document.getElementById('ModalEdit')
 		ModalEditHidden.addEventListener('hidden.bs.modal',this.clear);
 		ModalEditHidden.addEventListener('show.bs.modal',this.fill);
@@ -68,6 +106,8 @@ export default {
 	methods: {
 		async submit() {
 			this.disabled = true;
+			this.form.latitude = document.getElementById('e_latitude').value;
+			this.form.longitude = document.getElementById('e_longitude').value;
 			axios.put(this.route('points.update', this.point.id), this.form)
 			.then(response => {
 				this.disabled = false;
@@ -91,17 +131,58 @@ export default {
 			this.point = this.data;
 			this.form.name = this.point.name;
 			this.form.direction = this.point.direction;
+			this.form.latitude = this.point.latitude;
+			this.form.longitude = this.point.longitude;
+			var latlng = new google.maps.LatLng(this.point.latitude, this.point.longitude);
+			this.marker.setPosition(latlng);
+    		this.mapa.setCenter(latlng);
 		},
 		clear() {
 			this.errors = {};
 			this.form.name = '';
 			this.form.direction = '';
+			this.form.latitude = '';
+			this.form.longitude = '';
 		},
 		closeModal() {
 			var ModalEdit = document.getElementById('ModalEdit')
 			var modal = bootstrap.Modal.getInstance(ModalEdit)
 			modal.hide();
-		}
+		},
+		googlemaps(){
+			const loader = new Loader({
+				apiKey: "AIzaSyBwb9dRQxZNi710lse5jaLR017gByvnj4Y",
+				version: "weekly",
+			});
+			loader.load().then(() => {
+				var lat = parseFloat(this.point.latitude);
+				var lng = parseFloat(this.point.longitude);
+				var position = { lat: lat, lng: lng };
+				const map = new google.maps.Map(document.getElementById("e_map"), {
+					zoom: 16,
+					center: position,
+				});
+				this.mapa = map;
+				this.marker = new google.maps.Marker({
+					position: position,
+					map,
+					draggable: true,
+					title: this.point.name,
+					animation: google.maps.Animation.DROP,
+				});
+				this.marker.addListener("click", () => {
+					infowindow.open({
+						anchor: this.marker,
+						map,
+						shouldFocus: false,
+					});
+				});
+				google.maps.event.addListener(this.marker, 'dragend', function (evt) {
+					document.getElementById('e_latitude').value = evt.latLng.lat().toFixed(6);
+					document.getElementById('e_longitude').value = evt.latLng.lng().toFixed(6);
+				});
+			});
+		},
 	}
 }
 </script>

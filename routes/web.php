@@ -194,10 +194,11 @@ Route::middleware(['auth:sanctum', 'verified', 'verify_status'])->group(function
     Route::resource('users', UserController::class)->except(['show', 'destroy'])->names([
         'index' => 'users.index',
         'create' => 'users.create',
-        'store' => 'users.store',
+        'store' => 'users.store-auto',
         'edit' => 'users.edit',
         'update' => 'users.update',
     ]);
+    Route::post('users/store-manual', [UserController::class, 'storeManual'])->name('users.store-manual');
     Route::put('users/{user}/restore', [UserController::class, 'restore'])->name('users.restore');
     Route::put('users/{user}/destroy', [UserController::class, 'destroy'])->name('users.destroy');
 

@@ -10,7 +10,13 @@
     <title>{{ config('app.name', 'Orquesta Vivaldi Tarija') }}</title>
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700" rel="stylesheet" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <!--  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+    <script type="text/javascript">
+      // Notice how this gets configured before we load Font Awesome
+      window.FontAwesomeConfig = { autoReplaceSvg: false }
+    </script>
+    <script src="/fontawesome-free-5.15.4-web/js/all.min.js" crossorigin="anonymous"></script>
+    <link href="/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link href="/client/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/client/css/now-ui-kit.css?v=1.3.0" rel="stylesheet" />

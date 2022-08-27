@@ -216,7 +216,7 @@ export default {
 							if (data.profile_photo_path) {
 								return '<img class="avatar avatar-sm rounded-circle shadow" src="'+data.profile_photo_path+'" alt="off_white">';
 							} else {
-								return '<img class="avatar avatar-sm rounded-circle shadow" src="'+data.profile_photo_url+'" alt="off_white">';
+								return '<img class="avatar avatar-sm rounded-circle shadow" src="/img/profile.png" alt="off_white">';
 							}
 						}
 					},

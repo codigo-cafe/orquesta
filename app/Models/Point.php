@@ -12,6 +12,8 @@ class Point extends Model
     protected $fillable = [
         'name',
         'direction',
+        'latitude',
+        'longitude',
         'status',
     ];
 
