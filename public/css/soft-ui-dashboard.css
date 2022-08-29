@@ -14093,7 +14093,7 @@ fieldset:disabled .btn {
   .dropstart .dropdown-toggle:after,
   .dropend .dropdown-toggle:after {
     content: "\f107";
-    font: normal normal normal 14px/1 FontAwesome;
+    font: normal normal normal 14px/1 "Font Awesome 5 Free";
     border: none;
     vertical-align: middle;
     font-weight: 600;
@@ -14153,7 +14153,7 @@ fieldset:disabled .btn {
   }
 
   .dropdown .dropdown-menu:before {
-    font-family: "FontAwesome";
+    font-family: "Font Awesome 5 Free";
     content: "\f0d8";
     position: absolute;
     top: 0;
