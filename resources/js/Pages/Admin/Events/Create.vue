@@ -207,7 +207,12 @@ export default {
 			data.append('name', this.form.name);
 			data.append('description', this.form.description);
 			data.append('price', this.form.price);
-			data.append('date', moment(this.form.date).format('DD/MM/YYYY'));
+			console.log('fecha = ' + this.form.date)
+			if (typeof this.form.date !== "undefined") {
+				data.append('date', moment(this.form.date).format('DD/MM/YYYY'));
+			} else {
+				data.append('date', '');
+			}
 			data.append('start_time', this.form.start_time);
 			data.append('end_time', this.form.end_time);
 			data.append('place', this.form.place);
@@ -215,7 +220,7 @@ export default {
 			data.append('promotion_id', this.form.promotion_id);
 			data.append('people', this.form.people);
 			data.append('points', this.form.points);
-			console.log(moment(this.form.date).format('DD/MM/YYYY'))
+			//console.log(moment(this.form.date).format('DD/MM/YYYY'))
 
 			axios.post(this.route('events.store'), data)
 			.then(response => {

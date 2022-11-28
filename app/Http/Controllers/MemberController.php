@@ -35,7 +35,7 @@ class MemberController extends Controller
         if ($request->ajax()) {
             $can = $request->user() ? $request->user()->getPermissionArray() : [];
             $model = Person::query()->whereHas('member')->with('phones', 'address', 'member.instrument');
-            return DataTables::eloquent($model)
+            return DataTables::of($model)
             ->editColumn('member.created_at', function ($person) {
                 return $person->member->created_at->format('d/m/Y H:i');
             })
@@ -45,7 +45,7 @@ class MemberController extends Controller
             ->addColumn('can', function ($user) use($can) {
                 return json_decode($can, true);
             })
-            ->toJson();
+            ->make(true);
         }
     }
 

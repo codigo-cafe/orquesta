@@ -192,19 +192,20 @@ export default {
 				const self = this;
 				$.fn.dataTable.ext.errMode = 'none';
 				self.table = $('#datatables').DataTable({
+					order: [[0, 'desc']],
 					"processing": true,
 					"serverSide": true,
 					"ajax": "members/list",
 					"columns": [
-					{data : 'member.id', orderable: false},
+					{data : 'member.id', name: 'member.id', orderable: false},
 					{data : null, orderable: false, searchable: false},
 					{data : 'name'},
 					{data : 'surnames'},
-					{data : 'member.instrument.name'},
+					{data : 'member.instrument.name', orderable: false, searchable: false},
 					{data : 'phones[, ].number', orderable: false, searchable: false},
 					{data : 'status'},
-					{data : 'member.created_at'},
-					{data : 'member.updated_at'},
+					{data : 'member.created_at', orderable: false, searchable: false},
+					{data : 'member.updated_at', orderable: false, searchable: false},
 					],
 					"columnDefs": [
 					{

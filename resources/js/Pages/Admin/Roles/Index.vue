@@ -174,6 +174,7 @@ export default {
 				const self = this;
 				$.fn.dataTable.ext.errMode = 'none';
 				self.table = $('#datatables').DataTable({
+					order: [[3, 'desc']],
 					"processing": true,
 					"serverSide": true,
 					"ajax": "/roles/list",

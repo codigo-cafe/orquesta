@@ -7,7 +7,7 @@
 						<div class="col-8">
 							<div class="numbers">
 								<p class="text-sm mb-0 text-capitalize font-weight-bold">
-									<Inertia-link :href="route('reports.events')">Reportes de Eventos</Inertia-link>
+									<Inertia-link :href="route('reports.events')">Reporte de Eventos</Inertia-link>
 								</p>
 								<h5 class="font-weight-bolder mb-0">
 									{{ counts.events }}
@@ -55,7 +55,7 @@
 						<div class="col-8">
 							<div class="numbers">
 								<p class="text-sm mb-0 text-capitalize font-weight-bold">
-									<Inertia-link :href="route('reports.services')">Reportes de Servicios</Inertia-link>
+									<Inertia-link :href="route('reports.services')">Reporte de Servicios</Inertia-link>
 								</p>
 								<h5 class="font-weight-bolder mb-0">
 									{{ counts.services }}

@@ -223,6 +223,7 @@ export default {
 				const self = this;
 				$.fn.dataTable.ext.errMode = 'none';
 				self.table = $('#datatables').DataTable({
+					order: [[7, 'desc']],
 					"processing": true,
 					"serverSide": true,
 					"ajax": "users/list",
